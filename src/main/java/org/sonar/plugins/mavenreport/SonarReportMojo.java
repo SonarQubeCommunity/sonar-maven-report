@@ -15,11 +15,13 @@ import java.util.ResourceBundle;
  * @goal report
  */
 public class SonarReportMojo extends AbstractMavenReport {
+
   /**
-   * Report output directory. Note that this parameter is only relevant if the goal is run from the command line or
-   * from the default build lifecycle. If the goal is run indirectly as part of a site generation, the output
-   * directory configured in the Maven Site Plugin is used instead.
-   *
+   * @parameter expression="${sonar.host.url}" default-value="http://localhost:9000" alias="sonar.host.url"
+   */
+  private String sonarHostURL;
+
+  /**
    * @parameter default-value="${project.reporting.outputDirectory}"
    */
   private File outputDirectory;
@@ -39,6 +41,11 @@ public class SonarReportMojo extends AbstractMavenReport {
    * @readonly
    */
   protected MavenProject project;
+
+  /**
+   * @parameter expression="${branch}" alias="branch"
+   */
+  private String branch;
 
   protected Renderer getSiteRenderer() {
     return siteRenderer;
@@ -62,6 +69,12 @@ public class SonarReportMojo extends AbstractMavenReport {
     sink.head_();
 
     sink.body();
+
+    String url = getProjectUrl();
+    sink.link(url);
+    sink.text(url);
+    sink.link_();
+
     sink.body_();
     sink.flush();
     sink.close();
@@ -83,5 +96,24 @@ public class SonarReportMojo extends AbstractMavenReport {
 
   private ResourceBundle getBundle(Locale locale) {
     return ResourceBundle.getBundle("sonar-report", locale, this.getClass().getClassLoader());
+  }
+
+  private String getProjectUrl() {
+    StringBuilder sb = new StringBuilder(getSonarUrl())
+        .append("/project/index/")
+        .append(project.getGroupId())
+        .append(":")
+        .append(project.getArtifactId());
+    if (branch!=null) {
+      sb.append(":").append(branch);
+    }
+    return sb.toString();
+  }
+
+  private String getSonarUrl() {
+    if (sonarHostURL.endsWith("/")) {
+      return sonarHostURL.substring(0, sonarHostURL.length()-1);
+    }
+    return sonarHostURL;
   }
 }
