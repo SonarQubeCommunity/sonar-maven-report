@@ -7,7 +7,7 @@
     <relativePath>../parent</relativePath>
   </parent>
   <artifactId>maven-report</artifactId>
-  <version>0.1</version>
+  <version>0.2-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
   <name>Sonar Maven report plugin</name>
   <description>Add a report to Maven site that redirects on project dashboard</description>
@@ -67,11 +67,4 @@
 
 
   </dependencies>
-
-
-  <scm>
-    <connection>scm:svn:http://svn.codehaus.org/sonar-plugins/tags/maven-report-0.1</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/sonar-plugins/tags/maven-report-0.1</developerConnection>
-    <url>scm:svn:https://svn.codehaus.org/sonar-plugins/tags/maven-report-0.1</url>
-  </scm>
 </project>
