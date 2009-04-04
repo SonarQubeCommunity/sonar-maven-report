@@ -69,11 +69,16 @@ public class SonarReportMojo extends AbstractMavenReport {
     sink.head_();
 
     sink.body();
+    sink.sectionTitle1();
+    sink.text(getBundle(locale).getString("report.sonar.header"));
+    sink.sectionTitle1_();
 
     String url = getProjectUrl();
+    sink.text("Redirecting to ");
     sink.link(url);
     sink.text(url);
     sink.link_();
+    sink.rawText("<script type='text/javascript'> window.location='" + url + "'</script>");
 
     sink.body_();
     sink.flush();
@@ -104,7 +109,7 @@ public class SonarReportMojo extends AbstractMavenReport {
         .append(project.getGroupId())
         .append(":")
         .append(project.getArtifactId());
-    if (branch!=null) {
+    if (branch != null) {
       sb.append(":").append(branch);
     }
     return sb.toString();
@@ -112,7 +117,7 @@ public class SonarReportMojo extends AbstractMavenReport {
 
   private String getSonarUrl() {
     if (sonarHostURL.endsWith("/")) {
-      return sonarHostURL.substring(0, sonarHostURL.length()-1);
+      return sonarHostURL.substring(0, sonarHostURL.length() - 1);
     }
     return sonarHostURL;
   }
