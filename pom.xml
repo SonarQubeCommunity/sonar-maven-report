@@ -65,4 +65,10 @@
       <version>1.4.5</version>
     </dependency>
   </dependencies>
+
+  <scm>
+    <connection>scm:svn:http://svn.codehaus.org/sonar-plugins/trunk/maven-report</connection>
+    <developerConnection>scm:svn:https://svn.codehaus.org/sonar-plugins/trunk/maven-report</developerConnection>
+    <url>http://svn.sonar-plugins.codehaus.org</url>
+  </scm>
 </project>
