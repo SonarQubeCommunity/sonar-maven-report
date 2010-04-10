@@ -47,6 +47,22 @@ public class SonarReportMojo extends AbstractMavenReport {
    */
   private String branch;
 
+  protected String getSonarHostURL() {
+    return sonarHostURL;
+  }
+
+  protected void setSonarHostURL(String sonarHostURL) {
+    this.sonarHostURL = sonarHostURL;
+  }
+
+  protected String getBranch() {
+    return branch;
+  }
+
+  protected void setBranch(String branch) {
+    this.branch = branch;
+  }
+
   protected Renderer getSiteRenderer() {
     return siteRenderer;
   }
@@ -55,9 +71,12 @@ public class SonarReportMojo extends AbstractMavenReport {
     return outputDirectory.getAbsolutePath();
   }
 
+  protected void setOutputDirectory(File outputDirectory) {
+    this.outputDirectory = outputDirectory;
+  }
+
   protected MavenProject getProject() {
     return project;
-
   }
 
   protected void executeReport(Locale locale) throws MavenReportException {
@@ -83,12 +102,10 @@ public class SonarReportMojo extends AbstractMavenReport {
     sink.body_();
     sink.flush();
     sink.close();
-
   }
 
   public String getOutputName() {
     return "sonar";
-
   }
 
   public String getName(Locale locale) {
