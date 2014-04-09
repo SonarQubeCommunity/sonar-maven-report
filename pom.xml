@@ -28,9 +28,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:svn:http://svn.codehaus.org/sonar-plugins/trunk/maven-report</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/sonar-plugins/trunk/maven-report</developerConnection>
-    <url>http://svn.sonar-plugins.codehaus.org</url>
+    <connection>scm:git:git@github.com:SonarSource/sonar-maven-report.git</connection>
+    <developerConnection>scm:git:git@github.com:SonarSource/sonar-maven-report.git</developerConnection>
+    <url>https://github.com/Sonarcommunity/sonar-maven-report</url>
   </scm>
 
   <dependencies>
