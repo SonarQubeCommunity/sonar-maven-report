@@ -14,7 +14,7 @@
 
   <name>Sonar Maven report plugin</name>
   <description>Add a report to Maven site that redirects on project dashboard</description>
-  <url>http://docs.codehaus.org/display/SONAR/Sonar+Maven+report</url>
+  <url>https://github.com/SonarQubeCommunity/sonar-maven-report</url>
   <organization>
     <name>SonarSource</name>
     <url>http://www.sonarsource.com</url>
@@ -28,10 +28,14 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:SonarSource/sonar-maven-report.git</connection>
-    <developerConnection>scm:git:git@github.com:SonarSource/sonar-maven-report.git</developerConnection>
-    <url>https://github.com/Sonarcommunity/sonar-maven-report</url>
+    <connection>scm:git:git@github.com:SonarQubeCommunity/sonar-maven-report.git</connection>
+    <developerConnection>scm:git:git@github.com:SonarQubeCommunity/sonar-maven-report.git</developerConnection>
+    <url>https://github.com/SonarQubeCommunity/sonar-maven-report</url>
   </scm>
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/SonarQubeCommunity/sonar-maven-report/issues</url>
+  </issueManagement>
 
   <dependencies>
     <dependency>
