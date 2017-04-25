@@ -1,16 +1,41 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.codehaus.sonar-plugins</groupId>
     <artifactId>parent</artifactId>
-    <version>1</version>
+    <version>13</version>
     <relativePath>../parent</relativePath>
   </parent>
+
   <artifactId>maven-report</artifactId>
-  <version>0.1</version>
   <packaging>maven-plugin</packaging>
+  <version>0.2-SNAPSHOT</version>
+
   <name>Sonar Maven report plugin</name>
   <description>Add a report to Maven site that redirects on project dashboard</description>
+  <url>https://github.com/SonarQubeCommunity/sonar-maven-report</url>
+  <organization>
+    <name>SonarSource</name>
+    <url>http://www.sonarsource.com</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>GNU LGPL 3</name>
+      <url>http://www.gnu.org/licenses/lgpl.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:SonarQubeCommunity/sonar-maven-report.git</connection>
+    <developerConnection>scm:git:git@github.com:SonarQubeCommunity/sonar-maven-report.git</developerConnection>
+    <url>https://github.com/SonarQubeCommunity/sonar-maven-report</url>
+  </scm>
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/SonarQubeCommunity/sonar-maven-report/issues</url>
+  </issueManagement>
 
   <dependencies>
     <dependency>
@@ -21,11 +46,6 @@
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-plugin-api</artifactId>
-      <version>2.0.9</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-project</artifactId>
       <version>2.0.9</version>
     </dependency>
     <dependency>
@@ -53,25 +73,27 @@
       <artifactId>maven-reporting-api</artifactId>
       <version>2.0.9</version>
     </dependency>
-
     <dependency>
       <groupId>org.codehaus.plexus</groupId>
       <artifactId>plexus-container-default</artifactId>
       <version>1.0-alpha-9-stable-1</version>
     </dependency>
     <dependency>
-         <groupId>org.codehaus.plexus</groupId>
-         <artifactId>plexus-utils</artifactId>
-         <version>1.4.5</version>
-       </dependency>
-
-
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>1.4.5</version>
+    </dependency>
   </dependencies>
 
-
-  <scm>
-    <connection>scm:svn:http://svn.codehaus.org/sonar-plugins/tags/maven-report-0.1</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/sonar-plugins/tags/maven-report-0.1</developerConnection>
-    <url>scm:svn:https://svn.codehaus.org/sonar-plugins/tags/maven-report-0.1</url>
-  </scm>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-plugin-plugin</artifactId>
+          <version>2.5.1</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>

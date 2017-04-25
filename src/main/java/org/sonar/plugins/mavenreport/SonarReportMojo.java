@@ -1,3 +1,23 @@
+/*
+ * Sonar, open source software quality management tool.
+ * Copyright (C) 2009 SonarSource
+ * mailto:contact AT sonarsource DOT com
+ *
+ * Sonar is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * Sonar is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with Sonar; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
+ */
+
 package org.sonar.plugins.mavenreport;
 
 import org.apache.maven.doxia.sink.Sink;
@@ -47,6 +67,22 @@ public class SonarReportMojo extends AbstractMavenReport {
    */
   private String branch;
 
+  protected String getSonarHostURL() {
+    return sonarHostURL;
+  }
+
+  protected void setSonarHostURL(String sonarHostURL) {
+    this.sonarHostURL = sonarHostURL;
+  }
+
+  protected String getBranch() {
+    return branch;
+  }
+
+  protected void setBranch(String branch) {
+    this.branch = branch;
+  }
+
   protected Renderer getSiteRenderer() {
     return siteRenderer;
   }
@@ -55,9 +91,12 @@ public class SonarReportMojo extends AbstractMavenReport {
     return outputDirectory.getAbsolutePath();
   }
 
+  protected void setOutputDirectory(File outputDirectory) {
+    this.outputDirectory = outputDirectory;
+  }
+
   protected MavenProject getProject() {
     return project;
-
   }
 
   protected void executeReport(Locale locale) throws MavenReportException {
@@ -83,12 +122,10 @@ public class SonarReportMojo extends AbstractMavenReport {
     sink.body_();
     sink.flush();
     sink.close();
-
   }
 
   public String getOutputName() {
     return "sonarqube";
-
   }
 
   public String getName(Locale locale) {
