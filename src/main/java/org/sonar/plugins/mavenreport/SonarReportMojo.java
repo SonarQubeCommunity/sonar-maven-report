@@ -125,7 +125,7 @@ public class SonarReportMojo extends AbstractMavenReport {
   }
 
   public String getOutputName() {
-    return "sonar";
+    return "sonarqube";
   }
 
   public String getName(Locale locale) {
@@ -142,7 +142,7 @@ public class SonarReportMojo extends AbstractMavenReport {
 
   private String getProjectUrl() {
     StringBuilder sb = new StringBuilder(getSonarUrl())
-        .append("/project/index/")
+        .append("/dashboard/index/")
         .append(project.getGroupId())
         .append(":")
         .append(project.getArtifactId());
