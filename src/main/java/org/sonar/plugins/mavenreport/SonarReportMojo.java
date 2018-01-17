@@ -103,13 +103,13 @@ public class SonarReportMojo extends AbstractMavenReport {
     Sink sink = getSink();
     sink.head();
     sink.title();
-    sink.text(getBundle(locale).getString("report.sonar.header"));
+    sink.text(getHeader(locale));
     sink.title_();
     sink.head_();
 
     sink.body();
     sink.sectionTitle1();
-    sink.text(getBundle(locale).getString("report.sonar.header"));
+    sink.text(getHeader(locale));
     sink.sectionTitle1_();
 
     String url = getProjectUrl();
@@ -125,15 +125,38 @@ public class SonarReportMojo extends AbstractMavenReport {
   }
 
   public String getOutputName() {
-    return "sonarqube";
+    if (hasTriggerAlternative(Locale.getDefault())) {
+      return getBundle(Locale.getDefault()).getString("report.sonar.html.alternative");
+    }
+    else {
+      return getBundle(Locale.getDefault()).getString("report.sonar.html");
+    }
   }
 
   public String getName(Locale locale) {
-    return getBundle(locale).getString("report.sonar.name");
+    if (hasTriggerAlternative(locale)) {
+      return getBundle(locale).getString("report.sonar.name.alternative");
+    }
+    else {
+      return getBundle(locale).getString("report.sonar.name");
+    }
   }
 
   public String getDescription(Locale locale) {
     return getBundle(locale).getString("report.sonar.description");
+  }
+
+  public String getHeader(Locale locale) {
+    if (hasTriggerAlternative(locale)) {
+      return getBundle(locale).getString("report.sonar.header.alternative");
+    }
+    else {
+      return getBundle(locale).getString("report.sonar.header");
+    }
+  }
+
+  public boolean hasTriggerAlternative(Locale locale) {
+    return getProjectUrl().contains(getBundle(locale).getString("report.sonar.alternative.trigger"));
   }
 
   private ResourceBundle getBundle(Locale locale) {
