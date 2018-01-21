@@ -37,6 +37,12 @@
     <url>https://github.com/SonarQubeCommunity/sonar-maven-report</url>
     <tag>HEAD</tag>
   </scm>
+
+  <ciManagement>
+    <system>Travis CI</system>
+    <url>https://travis-ci.org/SonarQubeCommunity/sonar-maven-report</url>
+  </ciManagement>
+
   <issueManagement>
     <system>GitHub Issues</system>
     <url>https://github.com/SonarQubeCommunity/sonar-maven-report/issues</url>
