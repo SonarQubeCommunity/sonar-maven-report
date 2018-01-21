@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd" combine.self="override">
+  <bannerLeft>
+    <name>${project.name}</name>
+    <href />
+  </bannerLeft>
+
+  <bannerRight>
+    <name>SonarQube</name>
+    <src>images/logos/sonarqube.svg</src>
+    <href>https://www.sonarqube.org/</href>
+    <width>168</width>
+    <height>44</height>
+  </bannerRight>
+
+  <publishDate position="left" format="yyyy-MM-dd HH:mm:ss z" />
+  <version position="right" />
+
+  <poweredBy>
+    <logo name="${project.organization.name}" href="${project.organization.url}" img="./images/logos/sonarsource.svg" width="191" height="35" />
+  </poweredBy>
+
+  <skin>
+    <groupId>${skinGroupId}</groupId>
+    <artifactId>${skinArtifactId}</artifactId>
+    <version>${skinVersion}</version>
+  </skin>
+
+  <body>
+    <menu inherit="bottom" ref="parent" />
+    <menu inherit="bottom" ref="modules" />
+    <menu inherit="bottom" ref="reports" />
+  </body>
+</project>

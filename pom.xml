@@ -31,6 +31,8 @@
     </license>
   </licenses>
 
+  <mailingLists />
+
   <scm>
     <connection>scm:git:https://github.com/SonarQubeCommunity/sonar-maven-report.git</connection>
     <developerConnection>scm:git:git@github.com:SonarQubeCommunity/sonar-maven-report.git</developerConnection>
@@ -49,6 +51,12 @@
   </issueManagement>
 
   <properties>
+    <skinGroupId>org.apache.maven.skins</skinGroupId>
+    <skinArtifactId>maven-fluido-skin</skinArtifactId>
+    <skinVersion>${mavenFluidoSkinVersion}</skinVersion>
+
+    <mavenFluidoSkinVersion>1.7</mavenFluidoSkinVersion>
+
     <versionsMavenPluginVersion>2.5</versionsMavenPluginVersion>
     <mavenPluginPluginVersion>3.5</mavenPluginPluginVersion>
     <mavenCompilerPluginVersion>3.7.0</mavenCompilerPluginVersion>
@@ -58,6 +66,7 @@
     <nexusStagingMavenPluginVersion>1.6.8</nexusStagingMavenPluginVersion>
     <mavenDeployPluginVersion>2.8.2</mavenDeployPluginVersion>
     <mavenReleasePluginVersion>2.5.3</mavenReleasePluginVersion>
+    <mavenSitePluginVersion>3.7</mavenSitePluginVersion>
     <mavenProjectInfoReportsPluginVersion>2.9</mavenProjectInfoReportsPluginVersion>
 
     <mavenProjectVersion>2.2.1</mavenProjectVersion>
@@ -105,6 +114,7 @@
     <releaseProfiles>documents</releaseProfiles>
     <pushChanges>false</pushChanges>
 
+    <generateSitemap>true</generateSitemap>
     <dependency.details.enabled>false</dependency.details.enabled>
     <dependency.locations.enabled>false</dependency.locations.enabled>
     <licenseLinkOnly>true</licenseLinkOnly>
@@ -370,6 +380,17 @@
             <releaseProfiles>${releaseProfiles}</releaseProfiles>
           </configuration>
         </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>${mavenSitePluginVersion}</version>
+          <configuration>
+            <generateSitemap>${generateSitemap}</generateSitemap>
+            <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
+            <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
@@ -403,7 +424,6 @@
               <report>dependency-convergence</report>
               <report>plugins</report>
               <report>plugin-management</report>
-              <report>mailing-list</report>
             </reports>
           </reportSet>
         </reportSets>
