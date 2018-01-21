@@ -1,0 +1,197 @@
+# Handle line endings automatically for files detected as text
+# and leave all files detected as binary untouched.
+* text=auto
+
+#
+# The above will handle all files NOT found below
+#
+# These files are text and should be normalized (Convert crlf => lf)
+.gitattributes  text
+.gitignore      text
+.gitkeep        text
+.gitconfig      text
+
+*.bat           text
+*.cmd           text
+*.sh            text eol=lf
+Makefile        text
+makefile        text
+Dockerfile      text
+
+*.java          text
+*.jsp           text
+*.jspf          text
+*.jspx          text
+*.tag           text
+*.tagx          text
+*.tld           text
+*.ldif          text
+*.ctl           text
+*.sql           text
+*.feature       text
+*.plantuml      text
+*.graphml       text
+Jenkinsfile     text
+*.yml           text
+*.yaml          text
+*.raml          text
+*.diff          text diff -merge
+*.patch         text diff -merge
+*.properties    text
+*.MF            text
+*.mapping       text
+*.ini           text
+*.cnf           text
+*.conf          text
+*.config        text
+*.pageflow      text
+*.launch        text
+
+*.txt           text
+*.apt           text
+*.vm            text
+*.log           text
+*.importorder   text
+*.xsl           text
+*.xslt          text
+*.xml           text
+*.dtd           text
+*.xsd           text
+*.wsdl          text
+*.wsdd          text
+*.xjb           text
+*.php           text
+*.md            text
+*.adoc          text
+*.csv           text
+*.ftl           text
+*.jrxml         text
+*.dwt           text
+*.pu            text
+*.archimate     text
+*.ucls          text
+*.uxf           text
+.editorconfig   text
+*.dia           binary
+*.doc           binary
+*.docm          binary
+*.docx          binary
+*.dot           binary
+*.dotx          binary
+*.msg           binary
+*.ppt           binary
+*.pptm          binary
+*.pptx          binary
+*.pdf           binary
+*.odt           binary
+*.ai            binary
+*.rtf           binary
+*.vsd           binary
+*.xls           binary
+*.xlsm          binary
+*.xlsx          binary
+
+*.asp           text
+*.h             text
+*.css           text
+*.less          text
+*.sass          text
+*.scss          text
+*.htm           text
+*.html          text
+*.xhtml         text
+*.faces         text
+*.mht           text
+*.ts            text
+*.js            text
+*.jsx           text
+*.json          text
+*.coffee        text
+.htaccess       text
+
+# These files are binary and should be left untouched
+# (binary is a macro for -text -diff)
+#
+#image
+*.bmp           binary
+*.eps           binary
+*.gif           binary
+*.ico           binary
+*.jng           binary
+*.jpg           binary
+*.jpeg          binary
+*.jpx           binary
+*.jp2           binary
+*.jxr           binary
+*.mng           binary
+*.png           binary
+*.psb           binary
+*.psd           binary
+*.svg           -text diff -merge
+*.svgz          binary
+*.tif           binary
+*.tiff          binary
+*.wbmp          binary
+*.webp          binary
+Thumbs.db       binary
+
+#audio
+*.m4a           binary
+*.mid           binary
+*.midi          binary
+*.mp3           binary
+*.ogg           binary
+*.ra            binary
+
+#video
+*.3gpp          binary
+*.3gp           binary
+*.asf           binary
+*.fla           binary
+*.flv           binary
+*.m4v           binary
+*.mov           binary
+*.mp4           binary
+*.mpeg          binary
+*.mpg           binary
+*.swc           binary
+*.swf           binary
+*.webm          binary
+
+#font
+*.eot           binary
+*.otf           binary
+*.ttf           binary
+*.woff          binary
+*.woff2         binary
+
+#compiled
+*.com           binary
+*.class         binary
+*.dll           binary
+*.exe           binary
+*.o             binary
+*.so            binary
+
+#archive
+*.jar           binary
+*.ear           binary
+*.war           binary
+*.7z            binary
+*.rar           binary
+*.tar           binary
+*.zip           binary
+*.gz            binary
+*.tgz           binary
+
+#certificate
+*.pem           text
+*.p12           binary
+*.pfx           binary
+*.jks           binary
+*.jceks         binary
+cacerts         binary
+jssecacerts     binary
+
+# Project Specific ###
+# Project Specific ###
