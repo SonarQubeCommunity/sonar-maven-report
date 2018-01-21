@@ -37,7 +37,7 @@ import java.util.ResourceBundle;
 public class SonarReportMojo extends AbstractMavenReport {
 
   /**
-   * @parameter expression="${sonar.host.url}" default-value="http://localhost:9000" alias="sonar.host.url"
+   * @parameter property="sonar.host.url" default-value="http://localhost:9000" alias="sonar.host.url"
    */
   private String sonarHostURL;
 
@@ -56,14 +56,14 @@ public class SonarReportMojo extends AbstractMavenReport {
   /**
    * The Maven Project.
    *
-   * @parameter expression="${project}"
+   * @parameter property="project"
    * @required
    * @readonly
    */
   protected MavenProject project;
 
   /**
-   * @parameter expression="${branch}" alias="branch"
+   * @parameter property="branch" alias="branch"
    */
   private String branch;
 
