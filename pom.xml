@@ -32,7 +32,7 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:SonarQubeCommunity/sonar-maven-report.git</connection>
+    <connection>scm:git:https://github.com/SonarQubeCommunity/sonar-maven-report.git</connection>
     <developerConnection>scm:git:git@github.com:SonarQubeCommunity/sonar-maven-report.git</developerConnection>
     <url>https://github.com/SonarQubeCommunity/sonar-maven-report</url>
     <tag>HEAD</tag>
