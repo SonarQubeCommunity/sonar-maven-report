@@ -54,6 +54,9 @@
     <mavenCompilerPluginVersion>3.7.0</mavenCompilerPluginVersion>
     <mavenSourcePluginVersion>3.0.1</mavenSourcePluginVersion>
     <mavenJavadocPluginVersion>3.0.0</mavenJavadocPluginVersion>
+    <mavenGPGPluginVersion>1.6</mavenGPGPluginVersion>
+    <nexusStagingMavenPluginVersion>1.6.8</nexusStagingMavenPluginVersion>
+    <mavenDeployPluginVersion>2.8.2</mavenDeployPluginVersion>
     <mavenReleasePluginVersion>2.5.3</mavenReleasePluginVersion>
     <mavenProjectInfoReportsPluginVersion>2.9</mavenProjectInfoReportsPluginVersion>
 
@@ -152,6 +155,54 @@
           </plugin>
         </plugins>
       </reporting>
+    </profile>
+
+    <profile>
+      <id>openSource</id>
+
+      <distributionManagement>
+        <repository>
+          <id>ossrh</id>
+          <name>Open Source Releases</name>
+          <url>${ossrhHost}/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+          <id>ossrh</id>
+          <name>Open Source Snapshots</name>
+          <url>${ossrhHost}/content/repositories/snapshots</url>
+        </snapshotRepository>
+      </distributionManagement>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+                <configuration>
+                  <keyname>${gpg.keyname}</keyname>
+                  <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                  <gpgArguments>
+                    <arg>--pinentry-mode</arg>
+                    <arg>loopback</arg>
+                  </gpgArguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
   </profiles>
 
@@ -280,6 +331,34 @@
               </goals>
             </execution>
           </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>${mavenGPGPluginVersion}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.sonatype.plugins</groupId>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>${nexusStagingMavenPluginVersion}</version>
+          <extensions>true</extensions>
+          <configuration>
+            <serverId>ossrh</serverId>
+            <nexusUrl>${ossrhHost}</nexusUrl>
+            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${mavenDeployPluginVersion}</version>
+          <configuration>
+            <deployAtEnd>${deployAtEnd}</deployAtEnd>
+            <updateReleaseInfo>${updateReleaseInfo}</updateReleaseInfo>
+          </configuration>
         </plugin>
 
         <plugin>
