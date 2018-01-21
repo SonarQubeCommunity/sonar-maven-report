@@ -51,6 +51,8 @@
   <properties>
     <versionsMavenPluginVersion>2.5</versionsMavenPluginVersion>
     <mavenPluginPluginVersion>3.5</mavenPluginPluginVersion>
+    <mavenCompilerPluginVersion>3.7.0</mavenCompilerPluginVersion>
+    <mavenSourcePluginVersion>3.0.1</mavenSourcePluginVersion>
     <mavenJavadocPluginVersion>3.0.0</mavenJavadocPluginVersion>
     <mavenReleasePluginVersion>2.5.3</mavenReleasePluginVersion>
     <mavenProjectInfoReportsPluginVersion>2.9</mavenProjectInfoReportsPluginVersion>
@@ -60,6 +62,34 @@
     <mavenReportingApiVersion>3.0</mavenReportingApiVersion>
     <mavenReportingImplVersion>3.0.0</mavenReportingImplVersion>
 
+    <jdkHome>${env.JAVA_HOME}</jdkHome>
+    <jvm>${jdkHome}/bin/java</jvm>
+    <maven.compiler.executable>${jdkHome}/bin/javac</maven.compiler.executable>
+    <maven.compiler.fork>true</maven.compiler.fork>
+    <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+    <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
+    <maven.compiler.target>${maven.compiler.compilerVersion}</maven.compiler.target>
+    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+    <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+    <maven.compiler.meminitial>128m</maven.compiler.meminitial>
+    <maven.compiler.maxmem>512m</maven.compiler.maxmem>
+
+    <maven.source.attach>true</maven.source.attach>
+    <maven.source.includePom>true</maven.source.includePom>
+    <maven.source.excludeResources>false</maven.source.excludeResources>
+
+    <javadocExecutable>${jdkHome}/bin/javadoc</javadocExecutable>
+    <javadocVersion>${maven.compiler.target}</javadocVersion>
+    <javadocDoclint>none</javadocDoclint>
+    <javadocQuiet>true</javadocQuiet>
+    <javadocAdditionalOptions />
+    <javadocDetectJavaApiLink>false</javadocDetectJavaApiLink>
+    <javadocDetectOfflineLinks>false</javadocDetectOfflineLinks>
+    <javadocBreakiterator>true</javadocBreakiterator>
+    <javadocShow>protected</javadocShow>
+    <javadocMinmemory>128m</javadocMinmemory>
+    <javadocMaxmemory>512m</javadocMaxmemory>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -68,7 +98,7 @@
     <deployAtEnd>true</deployAtEnd>
     <updateReleaseInfo>true</updateReleaseInfo>
     <autoVersionSubmodules>true</autoVersionSubmodules>
-    <releaseProfiles></releaseProfiles>
+    <releaseProfiles>documents</releaseProfiles>
     <pushChanges>false</pushChanges>
 
     <dependency.details.enabled>false</dependency.details.enabled>
@@ -83,6 +113,24 @@
   </properties>
 
   <profiles>
+    <profile>
+      <id>documents</id>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
     <profile>
       <id>enableUpdatesReports</id>
 
@@ -153,11 +201,71 @@
 
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${mavenCompilerPluginVersion}</version>
+          <configuration>
+            <encoding>${project.build.sourceEncoding}</encoding>
+            <fork>${maven.compiler.fork}</fork>
+            <executable>${maven.compiler.executable}</executable>
+            <compilerVersion>${maven.compiler.compilerVersion}</compilerVersion>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+            <showDeprecation>${maven.compiler.showDeprecation}</showDeprecation>
+            <showWarnings>${maven.compiler.showWarnings}</showWarnings>
+            <meminitial>${maven.compiler.meminitial}</meminitial>
+            <maxmem>${maven.compiler.maxmem}</maxmem>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${mavenSourcePluginVersion}</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+              <configuration>
+                <attach>${maven.source.attach}</attach>
+                <includePom>${maven.source.includePom}</includePom>
+                <excludeResources>${maven.source.excludeResources}</excludeResources>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>${mavenJavadocPluginVersion}</version>
           <configuration>
-            <doclint>none</doclint>
+            <encoding>${project.build.sourceEncoding}</encoding>
+            <docencoding>${project.reporting.outputEncoding}</docencoding>
+            <javadocExecutable>${javadocExecutable}</javadocExecutable>
+            <javadocVersion>${javadocVersion}</javadocVersion>
+            <source>${maven.compiler.source}</source>
+            <doclint>${javadocDoclint}</doclint>
+            <quiet>${javadocQuiet}</quiet>
+            <additionalOptions>${javadocAdditionalOptions}</additionalOptions>
+            <detectJavaApiLink>${javadocDetectJavaApiLink}</detectJavaApiLink>
+            <detectOfflineLinks>${javadocDetectOfflineLinks}</detectOfflineLinks>
+            <breakiterator>${javadocBreakiterator}</breakiterator>
+            <show>${javadocShow}</show>
+            <minmemory>${javadocMinmemory}</minmemory>
+            <maxmemory>${javadocMaxmemory}</maxmemory>
           </configuration>
+          <executions>
+            <execution>
+              <id>attach-javadoc</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
 
         <plugin>
