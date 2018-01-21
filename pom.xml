@@ -44,7 +44,7 @@
   </ciManagement>
 
   <issueManagement>
-    <system>GitHub Issues</system>
+    <system>GitHub</system>
     <url>https://github.com/SonarQubeCommunity/sonar-maven-report/issues</url>
   </issueManagement>
 
