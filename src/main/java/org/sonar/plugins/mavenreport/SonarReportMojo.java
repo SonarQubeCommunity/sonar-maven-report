@@ -22,6 +22,9 @@ package org.sonar.plugins.mavenreport;
 
 import org.apache.maven.doxia.sink.Sink;
 import org.apache.maven.doxia.siterenderer.Renderer;
+import org.apache.maven.plugins.annotations.Component;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.reporting.AbstractMavenReport;
 import org.apache.maven.reporting.MavenReportException;
@@ -32,41 +35,48 @@ import java.util.ResourceBundle;
 
 
 /**
- * @goal report
+ * Add a report link to the Maven site that redirects to the project dashboard in SonarQube/SonarCloud.
+ *
+ * @since 0.1
  */
+@Mojo( name = "report")
 public class SonarReportMojo extends AbstractMavenReport {
 
-  /**
-   * @parameter property="sonar.host.url" default-value="http://localhost:9000" alias="sonar.host.url"
-   */
+  @Parameter( property = "sonar.host.url", defaultValue = "http://localhost:9000", alias = "sonar.host.url", required = true )
   private String sonarHostURL;
 
+  @Parameter( property = "branch", alias = "branch", required = false )
+  private String branch;
+
   /**
-   * @parameter default-value="${project.reporting.outputDirectory}"
+   * The output directory for the report. Note that this parameter is only evaluated if the goal is run directly from
+   * the command line. If the goal is run indirectly as part of a site generation, the output directory configured in
+   * the Maven Site Plugin is used instead.
+   *
+   * @since 0.1
    */
+  @Parameter( defaultValue = "${project.reporting.outputDirectory}", readonly = true, required = true )
   private File outputDirectory;
 
   /**
-   * Doxia Site Renderer.
-   *
-   * @component
+   * Doxia Site Renderer component.
    */
+  @Component
   protected Renderer siteRenderer;
 
   /**
    * The Maven Project.
    *
-   * @parameter property="project"
-   * @required
-   * @readonly
+   * @since 0.1
    */
+  @Parameter( defaultValue = "${project}", readonly = true, required = true )
   protected MavenProject project;
 
   /**
-   * @parameter property="branch" alias="branch"
+   * SonarQube/SonarCloud host url; property = "sonar.host.url", alias = "sonar.host.url" (default: http://localhost:9000).
+   *
+   * @since 0.1
    */
-  private String branch;
-
   protected String getSonarHostURL() {
     return sonarHostURL;
   }
@@ -75,6 +85,11 @@ public class SonarReportMojo extends AbstractMavenReport {
     this.sonarHostURL = sonarHostURL;
   }
 
+  /**
+   * Branch name; property = "branch", alias = "branch" (default: no branch).
+   *
+   * @since 0.1
+   */
   protected String getBranch() {
     return branch;
   }
