@@ -69,6 +69,7 @@
     <mavenSitePluginVersion>3.7</mavenSitePluginVersion>
     <mavenProjectInfoReportsPluginVersion>2.9</mavenProjectInfoReportsPluginVersion>
     <mavenDependencyCheckVersion>3.1.0</mavenDependencyCheckVersion>
+    <sonarMavenPluginVersion>3.4.0.905</sonarMavenPluginVersion>
 
     <mavenProjectVersion>2.2.1</mavenProjectVersion>
     <mavenPluginApiVersion>3.5.2</mavenPluginApiVersion>
@@ -114,6 +115,18 @@
     <customSuppressionFile>${customSuppressionHintsPath}/dependency-check-${customSuppressionHintsVersion}-suppression.xml</customSuppressionFile>
     <customHintsFile>${customSuppressionHintsPath}/dependency-check-${customSuppressionHintsVersion}-hints.xml</customHintsFile>
 
+    <sonar.host.url>${sonarCloudHost}</sonar.host.url>
+    <sonar.junit.reportPaths>target/surefire-reports,target/failsafe-reports</sonar.junit.reportPaths>
+    <sonar.jacoco.reportPaths>${coverageReportsPathUnit},${coverageReportsPathIntegration}</sonar.jacoco.reportPaths>
+    <sonar.dependencyCheck.reportPath>${owaspReportsPath}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
+    <sonar.dependencyCheck.htmlReportPath>${owaspReportsPath}/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
+    <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+    <sonar.java.binaries>target/classes</sonar.java.binaries>
+    <sonar.java.libraries>target/**/*.jar</sonar.java.libraries>
+    <sonar.exclusions>**/generated-sources/**,**/generated/**</sonar.exclusions>
+    <sonar.coverage.exclusions>**/generated/**</sonar.coverage.exclusions>
+    <sonar.cpd.exclusions>**/generated/**</sonar.cpd.exclusions>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -132,6 +145,7 @@
     <licenseLinkOnly>true</licenseLinkOnly>
 
     <ossrhHost>https://oss.sonatype.org</ossrhHost>
+    <sonarCloudHost>https://sonarcloud.io</sonarCloudHost>
 
     <versionsRulesVersion>1.3.1</versionsRulesVersion>
     <versionsRulesFolderVersion>${versionsRulesVersion}</versionsRulesFolderVersion>
@@ -441,6 +455,12 @@
             <suppressionFile>${customSuppressionFile}</suppressionFile>
             <hintsFile>${customHintsFile}</hintsFile>
           </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>${sonarMavenPluginVersion}</version>
         </plugin>
       </plugins>
     </pluginManagement>
