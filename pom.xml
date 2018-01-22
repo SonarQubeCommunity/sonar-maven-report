@@ -112,6 +112,7 @@
     <updateReleaseInfo>true</updateReleaseInfo>
     <autoVersionSubmodules>true</autoVersionSubmodules>
     <releaseProfiles>documents</releaseProfiles>
+    <tagNameFormat>maven-report-@{project.version}</tagNameFormat>
     <pushChanges>false</pushChanges>
 
     <generateSitemap>true</generateSitemap>
@@ -182,6 +183,10 @@
           <url>${ossrhHost}/content/repositories/snapshots</url>
         </snapshotRepository>
       </distributionManagement>
+
+      <properties>
+        <tagNameFormat>@{project.artifactId}-@{project.version}</tagNameFormat>
+      </properties>
 
       <build>
         <plugins>
