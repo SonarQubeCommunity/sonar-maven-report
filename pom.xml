@@ -70,6 +70,7 @@
     <mavenProjectInfoReportsPluginVersion>2.9</mavenProjectInfoReportsPluginVersion>
     <mavenDependencyCheckVersion>3.1.0</mavenDependencyCheckVersion>
     <sonarMavenPluginVersion>3.4.0.905</sonarMavenPluginVersion>
+    <mavenSonarReportPluginVersion>${project.version}</mavenSonarReportPluginVersion>
 
     <mavenProjectVersion>2.2.1</mavenProjectVersion>
     <mavenPluginApiVersion>3.5.2</mavenPluginApiVersion>
@@ -498,6 +499,15 @@
             </reports>
           </reportSet>
         </reportSets>
+      </plugin>
+
+      <plugin>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>sonarqube-maven-report</artifactId>
+        <version>${mavenSonarReportPluginVersion}</version>
+        <configuration>
+          <sonarHostURL>${sonarCloudHost}</sonarHostURL>
+        </configuration>
       </plugin>
     </plugins>
   </reporting>
