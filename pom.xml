@@ -68,6 +68,7 @@
     <mavenReleasePluginVersion>2.5.3</mavenReleasePluginVersion>
     <mavenSitePluginVersion>3.7</mavenSitePluginVersion>
     <mavenProjectInfoReportsPluginVersion>2.9</mavenProjectInfoReportsPluginVersion>
+    <mavenDependencyCheckVersion>3.1.0</mavenDependencyCheckVersion>
 
     <mavenProjectVersion>2.2.1</mavenProjectVersion>
     <mavenPluginApiVersion>3.5.2</mavenPluginApiVersion>
@@ -102,6 +103,16 @@
     <javadocShow>protected</javadocShow>
     <javadocMinmemory>128m</javadocMinmemory>
     <javadocMaxmemory>512m</javadocMaxmemory>
+
+    <owaspReportsPath>${project.build.directory}/owasp-reports</owaspReportsPath>
+    <owaspReportFormat>all</owaspReportFormat>
+    <cveValidForHours>24</cveValidForHours>
+
+    <customSuppressionHintsVersion>1.0.2</customSuppressionHintsVersion>
+    <customSuppressionHintsFolderVersion>${customSuppressionHintsVersion}</customSuppressionHintsFolderVersion>
+    <customSuppressionHintsPath>${ossrhHost}/content/groups/public/nl/demon/shadowland/freedumbytes/maven/owasp/dependency-check/${customSuppressionHintsFolderVersion}</customSuppressionHintsPath>
+    <customSuppressionFile>${customSuppressionHintsPath}/dependency-check-${customSuppressionHintsVersion}-suppression.xml</customSuppressionFile>
+    <customHintsFile>${customSuppressionHintsPath}/dependency-check-${customSuppressionHintsVersion}-hints.xml</customHintsFile>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -160,6 +171,27 @@
                   <report>dependency-updates-report</report>
                   <report>plugin-updates-report</report>
                   <report>property-updates-report</report>
+                </reports>
+              </reportSet>
+            </reportSets>
+          </plugin>
+        </plugins>
+      </reporting>
+    </profile>
+
+    <profile>
+      <id>enableDependencyCheckReport</id>
+
+      <reporting>
+        <plugins>
+          <plugin>
+            <groupId>org.owasp</groupId>
+            <artifactId>dependency-check-maven</artifactId>
+            <version>${mavenDependencyCheckVersion}</version>
+            <reportSets>
+              <reportSet>
+                <reports>
+                  <report>aggregate</report>
                 </reports>
               </reportSet>
             </reportSets>
@@ -394,6 +426,20 @@
             <generateSitemap>${generateSitemap}</generateSitemap>
             <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
             <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.owasp</groupId>
+          <artifactId>dependency-check-maven</artifactId>
+          <version>${mavenDependencyCheckVersion}</version>
+          <configuration>
+            <name>Dependency Check Report</name>
+            <outputDirectory>${owaspReportsPath}</outputDirectory>
+            <format>${owaspReportFormat}</format>
+            <cveValidForHours>${cveValidForHours}</cveValidForHours>
+            <suppressionFile>${customSuppressionFile}</suppressionFile>
+            <hintsFile>${customHintsFile}</hintsFile>
           </configuration>
         </plugin>
       </plugins>
