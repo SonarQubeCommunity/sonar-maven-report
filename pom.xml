@@ -60,6 +60,10 @@
     <versionsMavenPluginVersion>2.5</versionsMavenPluginVersion>
     <mavenPluginPluginVersion>3.5</mavenPluginPluginVersion>
     <mavenCompilerPluginVersion>3.7.0</mavenCompilerPluginVersion>
+    <jacocoMavenPluginVersion>0.7.9</jacocoMavenPluginVersion>
+    <mavenSurefirePluginVersion>2.20.1</mavenSurefirePluginVersion>
+    <mavenFailsafePluginVersion>${mavenSurefirePluginVersion}</mavenFailsafePluginVersion>
+    <mavenSurefireReportPluginVersion>${mavenSurefirePluginVersion}</mavenSurefireReportPluginVersion>
     <mavenSourcePluginVersion>3.0.1</mavenSourcePluginVersion>
     <mavenJavadocPluginVersion>3.0.0</mavenJavadocPluginVersion>
     <mavenGPGPluginVersion>1.6</mavenGPGPluginVersion>
@@ -77,6 +81,9 @@
     <mavenReportingApiVersion>3.0</mavenReportingApiVersion>
     <mavenReportingImplVersion>3.0.0</mavenReportingImplVersion>
     <mavenPluginAnnotationsVersion>3.5</mavenPluginAnnotationsVersion>
+    <mavenPluginTestingHarness>3.3.0</mavenPluginTestingHarness>
+    <aetherApiVersion>1.1.0</aetherApiVersion>
+    <doxiaVersion>1.8</doxiaVersion>
 
     <jdkHome>${env.JAVA_HOME}</jdkHome>
     <jvm>${jdkHome}/bin/java</jvm>
@@ -105,6 +112,27 @@
     <javadocShow>protected</javadocShow>
     <javadocMinmemory>128m</javadocMinmemory>
     <javadocMaxmemory>512m</javadocMaxmemory>
+
+    <jacoco.skip>false</jacoco.skip>
+    <skipCodeCoverage>${jacoco.skip}</skipCodeCoverage>
+    <jacoco.append>false</jacoco.append>
+    <coverageReportsPath>${project.build.directory}/coverage-reports</coverageReportsPath>
+    <coverageReportsPathUnit>${coverageReportsPath}/jacoco-unit.exec</coverageReportsPathUnit>
+    <coverageReportsPathIntegration>${coverageReportsPath}/jacoco-integration.exec</coverageReportsPathIntegration>
+
+    <skipTests>false</skipTests>
+    <skipUnitTests>${skipTests}</skipUnitTests>
+    <skipIntegrationTests>${skipTests}</skipIntegrationTests>
+    <linkXRef>false</linkXRef>
+    <aggregateSurefireReports>false</aggregateSurefireReports>
+    <surefire.runOrder>hourly</surefire.runOrder>
+    <failsafe.runOrder>hourly</failsafe.runOrder>
+    <disableXmlReport>false</disableXmlReport>
+    <surefire.reportFormat>brief</surefire.reportFormat>
+    <failsafe.reportFormat>brief</failsafe.reportFormat>
+    <trimStackTrace>false</trimStackTrace>
+    <surefire.printSummary>true</surefire.printSummary>
+    <failsafe.printSummary>true</failsafe.printSummary>
 
     <owaspReportsPath>${project.build.directory}/owasp-reports</owaspReportsPath>
     <owaspReportFormat>all</owaspReportFormat>
@@ -151,6 +179,9 @@
     <versionsRulesVersion>1.3.1</versionsRulesVersion>
     <versionsRulesFolderVersion>${versionsRulesVersion}</versionsRulesFolderVersion>
     <versionsRulesPath>${ossrhHost}/content/groups/public/nl/demon/shadowland/freedumbytes/maven/versioning/versions-rules/${versionsRulesFolderVersion}</versionsRulesPath>
+
+    <bomVersion>3.1.1</bomVersion>
+    <groupVersion>${bomVersion}</groupVersion>
   </properties>
 
   <profiles>
@@ -266,7 +297,28 @@
         </plugins>
       </build>
     </profile>
+
+    <profile>
+      <id>integrationTestsOnly</id>
+
+      <properties>
+        <skipUnitTests>true</skipUnitTests>
+        <skipIntegrationTests>false</skipIntegrationTests>
+      </properties>
+    </profile>
   </profiles>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>nl.demon.shadowland.freedumbytes.maven.dependencies</groupId>
+        <artifactId>bom</artifactId>
+        <version>${bomVersion}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
@@ -298,6 +350,42 @@
       <artifactId>maven-plugin-annotations</artifactId>
       <version>${mavenPluginAnnotationsVersion}</version>
       <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.maven.plugin-testing</groupId>
+      <artifactId>maven-plugin-testing-harness</artifactId>
+      <version>${mavenPluginTestingHarness}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.aether</groupId>
+      <artifactId>aether-api</artifactId>
+      <version>${aetherApiVersion}</version>
+      <scope>test</scope>
+    </dependency>
+
+     <dependency>
+      <groupId>org.apache.maven.doxia</groupId>
+      <artifactId>doxia-core</artifactId>
+      <version>${doxiaVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.maven.doxia</groupId>
+      <artifactId>doxia-sink-api</artifactId>
+      <version>${doxiaVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>nl.demon.shadowland.freedumbytes.maven.dependencies</groupId>
+      <artifactId>test</artifactId>
+      <version>${groupVersion}</version>
+      <type>pom</type>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -342,6 +430,95 @@
             <meminitial>${maven.compiler.meminitial}</meminitial>
             <maxmem>${maven.compiler.maxmem}</maxmem>
           </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>${jacocoMavenPluginVersion}</version>
+          <configuration>
+            <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+            <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
+            <skip>${skipCodeCoverage}</skip>
+            <append>${jacoco.append}</append>
+          </configuration>
+          <executions>
+            <execution>
+              <id>agent-unit</id>
+              <configuration>
+                <destFile>${coverageReportsPathUnit}</destFile>
+              </configuration>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>agent-integration</id>
+              <configuration>
+                <destFile>${coverageReportsPathIntegration}</destFile>
+              </configuration>
+              <goals>
+                <goal>prepare-agent-integration</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${mavenSurefirePluginVersion}</version>
+          <configuration>
+            <skipTests>${skipUnitTests}</skipTests>
+            <runOrder>${surefire.runOrder}</runOrder>
+            <jvm>${jvm}</jvm>
+            <disableXmlReport>${disableXmlReport}</disableXmlReport>
+            <reportFormat>${surefire.reportFormat}</reportFormat>
+            <trimStackTrace>${trimStackTrace}</trimStackTrace>
+            <printSummary>${surefire.printSummary}</printSummary>
+            <includes>
+              <include>**/Test*.java</include>
+              <include>**/*Test.java</include>
+              <include>**/*Tests.java</include>
+              <include>**/*TestCase.java</include>
+              <include>**/*UnitTest.java</include>
+            </includes>
+            <excludes>
+              <exclude>**/*IntegrationTest.java</exclude>
+              <exclude>**/*IntegrationTests.java</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>${mavenFailsafePluginVersion}</version>
+          <configuration>
+            <encoding>${project.reporting.outputEncoding}</encoding>
+            <skipTests>${skipIntegrationTests}</skipTests>
+            <runOrder>${failsafe.runOrder}</runOrder>
+            <jvm>${jvm}</jvm>
+            <disableXmlReport>${disableXmlReport}</disableXmlReport>
+            <reportFormat>${failsafe.reportFormat}</reportFormat>
+            <trimStackTrace>${trimStackTrace}</trimStackTrace>
+            <printSummary>${failsafe.printSummary}</printSummary>
+            <includes>
+              <include>**/IT*.java</include>
+              <include>**/*IT.java</include>
+              <include>**/*ITCase.java</include>
+              <include>**/*IntegrationTest.java</include>
+              <include>**/*IntegrationTests.java</include>
+            </includes>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>integration-test</goal>
+                <goal>verify</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
 
         <plugin>
@@ -465,10 +642,47 @@
         </plugin>
       </plugins>
     </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+      </plugin>
+    </plugins>
   </build>
 
   <reporting>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>${mavenSurefireReportPluginVersion}</version>
+        <configuration>
+          <skipSurefireReport>${skipUnitTests}</skipSurefireReport>
+          <skipFailsafeReport>${skipIntegrationTests}</skipFailsafeReport>
+          <linkXRef>${linkXRef}</linkXRef>
+          <aggregate>${aggregateSurefireReports}</aggregate>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>report-only</report>
+              <report>failsafe-report-only</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
