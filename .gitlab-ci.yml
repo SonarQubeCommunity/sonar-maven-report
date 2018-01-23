@@ -1,0 +1,239 @@
+stages:
+  - build
+  - test
+  - docs
+  - deploy
+
+
+
+variables:
+  DOCKER_IMAGE: "maven:3.5.2-jdk-8"
+  MAVEN_SHOW_TIME: "-Dorg.slf4j.simpleLogger.showDateTime=true"
+  MAVEN_FORMAT_TIME: "-Dorg.slf4j.simpleLogger.dateTimeFormat=EEE..yyyy-MM-dd...HH:mm:ss.SSS..z"
+  MAVEN_SUPPRESS_DOWNLOAD_LOGS: "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN"
+  MAVEN_PREVENT_RECOMPILE: "-Dmaven.compiler.useIncrementalCompilation=false"
+#  MAVEN_ALTERNATIVE_REPO_LOCATION: ".m2/repository"
+#  MAVEN_OPTS: "-Djava.awt.headless=true $MAVEN_SHOW_TIME $MAVEN_FORMAT_TIME $MAVEN_SUPPRESS_DOWNLOAD_LOGS -Dmaven.repo.local=$MAVEN_ALTERNATIVE_REPO_LOCATION"
+  MAVEN_OPTS: "-Djava.awt.headless=true $MAVEN_SHOW_TIME $MAVEN_FORMAT_TIME $MAVEN_SUPPRESS_DOWNLOAD_LOGS"
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-fast --show-version $MAVEN_PREVENT_RECOMPILE"
+
+
+
+#cache:
+#  paths:
+#    - "$MAVEN_ALTERNATIVE_REPO_LOCATION"
+#  key: "$CI_COMMIT_SHA"
+
+
+
+
+
+.maven-compile: &maven-compile
+  stage: build
+  script:
+    - 'mvn $MAVEN_CLI_OPTS test-compile -PopenSource'
+  artifacts:
+    paths:
+      - "target"
+      - "*/target"
+      - "*/*/target"
+      - "src/main/generated"
+      - "*/src/main/generated"
+      - "*/*/src/main/generated"
+    expire_in: 1h
+  tags:
+    - docker
+
+
+
+.maven-unit: &maven-unit
+  stage: test
+  script:
+    - 'find . -name "*.class" -exec touch {} \+'
+    - 'mvn $MAVEN_CLI_OPTS test -PopenSource'
+  artifacts:
+    paths:
+      - "target/surefire-reports/*"
+      - "*/target/surefire-reports/*"
+      - "*/*/target/surefire-reports/*"
+      - "target/coverage-reports/*"
+      - "*/target/coverage-reports/*"
+      - "*/*/target/coverage-reports/*"
+    expire_in: 1h
+    when:
+      always
+  tags:
+    - docker
+
+
+
+.maven-integration-artifacts: &maven-integration-artifacts
+  stage: test
+  script:
+    - 'find . -name "*.class" -exec touch {} \+'
+#    - 'mvn $MAVEN_CLI_OPTS $MVN_PHASE -PopenSource,documents,integrationTestsOnly'
+    - 'mvn $MAVEN_CLI_OPTS $MVN_PHASE -Pdocuments,integrationTestsOnly'
+#    - 'mvn $MAVEN_CLI_OPTS animal-sniffer:check -PopenSource'
+#    - 'mvn $MAVEN_CLI_OPTS enforcer:enforce -PopenSource'
+  artifacts:
+    paths:
+      - "target/failsafe-reports/*"
+      - "*/target/failsafe-reports/*"
+      - "*/*/target/failsafe-reports/*"
+      - "target/coverage-reports/*"
+      - "*/target/coverage-reports/*"
+      - "*/*/target/coverage-reports/*"
+    expire_in: 1h
+    when:
+      always
+  tags:
+    - docker
+
+
+
+.maven-sonar: &maven-sonar
+  stage: docs
+  script:
+    - 'mvn $MAVEN_CLI_OPTS org.owasp:dependency-check-maven:aggregate -PopenSource'
+    - 'mvn $MAVEN_CLI_OPTS sonar:sonar -PopenSource,sonarCloud'
+  tags:
+    - docker
+  only:
+    - ossrh-releases@freedumbytes/sonar-maven-report
+
+
+
+.maven-site: &maven-site
+  stage: docs
+  script:
+    - 'mvn $MAVEN_CLI_OPTS site -PopenSource,enableUpdatesReports,enableDependencyCheckReport'
+    - 'find . -type f -name "sonar.html" | xargs --no-run-if-empty sed -i "s/\/project\/index\//\/dashboard\/index\//g"'
+#    - 'mvn $MAVEN_CLI_OPTS site:stage -PopenSource,enableUpdatesReports,enableDependencyCheckReport'
+#    - 'rm -r target/site'
+#    - 'mv `find ./target -type f -name "team-list.html" | sed -r "s|/[^/]+$||" | sort -u | head -1` target/pages'
+  artifacts:
+    paths:
+#      - "target/pages"
+      - "target/site"
+    expire_in: 1h
+  tags:
+    - docker
+
+
+
+.maven-effective-pom: &maven-effective-pom
+  stage: docs
+  script:
+    - 'mvn $MAVEN_CLI_OPTS help:effective-pom -PopenSource'
+  tags:
+    - docker
+
+
+
+
+
+maven-compile:job:
+  <<: *maven-compile
+  image: $DOCKER_IMAGE
+
+
+
+maven-unit:job:
+  <<: *maven-unit
+  image: $DOCKER_IMAGE
+  dependencies:
+    - maven-compile:job
+
+
+
+maven-integration-artifacts-verify:job:
+  <<: *maven-integration-artifacts
+  image: $DOCKER_IMAGE
+  variables:
+    MVN_PHASE: "install"
+  dependencies:
+    - maven-compile:job
+  except:
+    - ossrh-releases@freedumbytes/sonar-maven-report
+    - tags@freedumbytes/sonar-maven-report
+
+
+
+maven-integration-artifacts-deploy:job:
+  <<: *maven-integration-artifacts
+  image: $DOCKER_IMAGE
+  variables:
+#    MVN_PHASE: "deploy"
+    MVN_PHASE: "install"
+  dependencies:
+    - maven-compile:job
+  only:
+    - ossrh-releases@freedumbytes/sonar-maven-report
+    - tags@freedumbytes/sonar-maven-report
+
+
+
+#maven-sonar:job:
+#  <<: *maven-sonar
+#  image: $DOCKER_IMAGE
+#  dependencies:
+#    - maven-unit:job
+#    - maven-integration-artifacts-deploy:job
+
+
+
+maven-site:job:
+  <<: *maven-site
+  image: $DOCKER_IMAGE
+  dependencies:
+    - maven-compile:job
+    - maven-unit:job
+    - maven-integration-artifacts-deploy:job
+  only:
+    - ossrh-releases@freedumbytes/sonar-maven-report
+#    - tags@freedumbytes/sonar-maven-report
+
+
+
+maven-site-failure:job:
+  <<: *maven-site
+  image: $DOCKER_IMAGE
+  dependencies:
+    - maven-compile:job
+    - maven-unit:job
+    - maven-integration-artifacts-verify:job
+    - maven-integration-artifacts-deploy:job
+  artifacts:
+    paths:
+#      - "target/pages"
+      - "target/site"
+    expire_in: 1 day
+  when:
+    on_failure
+
+
+
+maven-effective-pom:job:
+  <<: *maven-effective-pom
+  image: $DOCKER_IMAGE
+  when:
+    on_failure
+
+
+
+pages:
+  stage: deploy
+  script:
+  - 'mkdir .public'
+#  - 'cp -r target/pages/* .public'
+  - 'cp -r target/site/* .public'
+  - 'mv .public public'
+  dependencies:
+    - maven-site:job
+  artifacts:
+    paths:
+    - public
+    expire_in: 1h
+  only:
+    - ossrh-releases@freedumbytes/sonar-maven-report
+#    - tags@freedumbytes/sonar-maven-report
