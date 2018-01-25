@@ -18,9 +18,130 @@ In [![issue 9](https://img.shields.io/github/issues/detail/s/SonarQubeCommunity/
 
 ## Releases
 
-The code itself is released in the `master` branch as `maven-report-x.y.z`. The changes are then merged to `ossrh-releases` branch and released as `sonarqube-maven-report-x.y.z` under groupId `nl.demon.shadowland.maven.plugins`, which was already configured for OSSRH access.
+The code itself is released in the `master` branch as `maven-report-x.y.z`. The changes are then merged to the `ossrh-releases` branch and released as `sonarqube-maven-report-x.y.z` under the groupId `nl.demon.shadowland.maven.plugins`, which was already configured for OSSRH access.
 
-<!--- ### The gory details -->
+#### The gory details
+
+The [OSSRH release and deployment stuff](https://freedumbytes.gitlab.io/dpl/html/complete-manual.html#prj.maven.deploy.artifact.open.source) is activated with the `openSource` profile:
+
+```xml
+    <profile>
+      <id>openSource</id>
+
+      <distributionManagement>
+        <repository>
+          <id>ossrh</id>
+          <name>Open Source Releases</name>
+          <url>${ossrhHost}/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+          <id>ossrh</id>
+          <name>Open Source Snapshots</name>
+          <url>${ossrhHost}/content/repositories/snapshots</url>
+        </snapshotRepository>
+      </distributionManagement>
+
+      <properties>
+        <tagNameFormat>@{project.artifactId}-@{project.version}</tagNameFormat>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+                <configuration>
+                  <keyname>${gpg.keyname}</keyname>
+                  <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                  <gpgArguments>
+                    <arg>--pinentry-mode</arg>
+                    <arg>loopback</arg>
+                  </gpgArguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+```
+
+For OSSRH deployment the artifacts must be signed with a [PGP Signature](https://freedumbytes.gitlab.io/dpl/html/complete-manual.html#prj.maven.deploy.pgp), which is stored in the `settings.xml` and referenced by `gpg.keyname`:
+
+```xml
+  <servers>
+    <server>
+      <id>DD605CC8A9582C0D</id>
+      <passphrase>{…}</passphrase>
+    </server>
+  </servers>
+
+  …
+
+  <profiles>
+    <profile>
+      <id>gnupg</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <gpg.executable>…/gpg</gpg.executable>
+        <gpg.keyname>DD605CC8A9582C0D</gpg.keyname>
+        <gpg.skip>false</gpg.skip>
+      </properties>
+    </profile>
+  </profiles>
+```
+
+The [OSSRH account](https://freedumbytes.gitlab.io/dpl/html/complete-manual.html#repo.nexus.maven.distribution.management) is also stored in the `settings.xml` and is referenced by the `id` from the `distributionManagement`:
+
+```xml
+  <servers>
+    <server>
+      <id>ossrh</id>
+      <username>username</username>
+      <password>{…}</password>
+    </server>
+  </servers>
+```
+
+In case of Java code the [Sources](https://freedumbytes.gitlab.io/dpl/html/complete-manual.html#prj.maven.setup.java.source) and the [Javadoc](https://freedumbytes.gitlab.io/dpl/html/complete-manual.html#prj.maven.setup.java.javadoc) must also be included:
+
+```xml
+  <profiles>
+    <profile>
+      <id>documents</id>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+```
+
+**Note**: When sources and javadoc are generated in the same phase `verify` as the PGP Signing make sure the `documents` profile is placed before the `openSource` profile, otherwise they won't get signed and thus the deployment will fail.
 
 ## Usage version 0.2.x
 
@@ -72,9 +193,9 @@ Optionally, you can add the following properties to override default values:
 
   <properties>
     <!-- default value is http://localhost:9000 -->
-    <sonar.host.url>https://sonarqube.dev.lan/</sonar.host.url>
+    <sonar.host.url>https://sonarcloud.io/</sonar.host.url>
     <!-- no branch by default -->
-    <branch>master</branch>
+    <branch>osssrh-releases</branch>
   </properties>
 
   …
@@ -85,14 +206,11 @@ Optionally, you can add the following properties to override default values:
 </project>
 ```
 
+**Note**: The Maven report uses as default `SonarQube` for title, header and html filename. But in case of host `sonarcloude.io` the report switches to `SonarCloud`.
+
+To see [the Maven report in action](https://freedumbytes.gitlab.io/sonar-maven-report/project-reports.html) this project is [mirrored on GitLab](https://gitlab.com/freedumbytes/sonar-maven-report), where the branch [ossrh-releases](https://gitlab.com/freedumbytes/sonar-maven-report/tree/ossrh-releases) is used to generate the site with a [.gitlab-ci.yml](https://freedumbytes.gitlab.io/dpl/html/complete-manual.html#continuous.integration.pipeline.gitlab).
+
 ## Usage Maven
 
 Generate the Maven site with: `mvn site`.
-<!--- Generate only the report with `` or `mvn nl.demon.shadowland.maven.plugins:sonarqube-maven-report:report`. -->
-
-# Comment test
-
-[comment]: <> ( * [sonarqube-maven-report](https://mvnrepository.com/artifact/nl.demon.shadowland.maven.plugins/sonarqube-maven-report).)
-[//]: <> ( * [sonarqube-maven-report](https://mvnrepository.com/artifact/nl.demon.shadowland.maven.plugins/sonarqube-maven-report).)
-[//]: # ( * [sonarqube-maven-report](https://mvnrepository.com/artifact/nl.demon.shadowland.maven.plugins/sonarqube-maven-report).)
-<!--- * [sonarqube-maven-report](https://mvnrepository.com/artifact/nl.demon.shadowland.maven.plugins/sonarqube-maven-report). -->
+<!--- ToDo: Generate only the report with `` or `mvn nl.demon.shadowland.maven.plugins:sonarqube-maven-report:report`. -->
