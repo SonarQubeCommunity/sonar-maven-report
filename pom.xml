@@ -346,6 +346,12 @@
     </dependency>
 
     <dependency>
+      <groupId>org.apache.maven.doxia</groupId>
+      <artifactId>doxia-sink-api</artifactId>
+      <version>${doxiaVersion}</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.apache.maven.plugin-tools</groupId>
       <artifactId>maven-plugin-annotations</artifactId>
       <version>${mavenPluginAnnotationsVersion}</version>
@@ -364,20 +370,6 @@
       <artifactId>aether-api</artifactId>
       <version>${aetherApiVersion}</version>
       <scope>test</scope>
-    </dependency>
-
-     <dependency>
-      <groupId>org.apache.maven.doxia</groupId>
-      <artifactId>doxia-core</artifactId>
-      <version>${doxiaVersion}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.maven.doxia</groupId>
-      <artifactId>doxia-sink-api</artifactId>
-      <version>${doxiaVersion}</version>
-      <scope>provided</scope>
     </dependency>
 
     <dependency>
