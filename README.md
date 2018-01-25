@@ -327,10 +327,10 @@ Alternatively, you can add the following plugin management to override default v
           <artifactId>sonarqube-maven-report</artifactId>
           <version>0.2.2</version>
           <configuration>
-		    <!-- default value is http://localhost:9000 -->
+            <!-- default value is http://localhost:9000 -->
             <sonarHostURL>https://sonarcloud.io/</sonarHostURL>
-		    <!-- no branch by default -->
-		    <branch>osssrh-releases</branch>
+            <!-- no branch by default -->
+            <branch>osssrh-releases</branch>
           </configuration>
         </plugin>
       </plugins>
