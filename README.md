@@ -193,10 +193,10 @@ Add the plugin to the reporting section in the POM:
 
 ## Usage version 0.1
 
-[![Nexus](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/nexus.png "Nexus") Nexus Repository Manager](https://oss.sonatype.org/index.html#nexus-search;gav~org.codehaus.sonar-plugins~maven-report~~~)
-
 [![Maven Central](https://img.shields.io/maven-central/v/org.codehaus.sonar-plugins/maven-report.svg?label=Maven%20Central "Maven Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.codehaus.sonar-plugins%22%20AND%20a%3A%22maven-report%22)
        [![SonarQube/SonarCloud Maven Report Plugin License](https://img.shields.io/badge/GNU_Lesser_General_Public_License-3.0-red.svg "SonarQube/SonarCloud Maven Report Plugin License")](https://www.gnu.org/licenses/lgpl-3.0.html)
+
+[![Nexus](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/nexus.png "Nexus") Nexus Repository Manager](https://oss.sonatype.org/index.html#nexus-search;gav~org.codehaus.sonar-plugins~maven-report~~~)
 
 [![Central](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/central.png "Central") The Central Repository](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.codehaus.sonar-plugins%22%20AND%20a%3A%22maven-report%22)
 
