@@ -107,7 +107,6 @@ variables:
   stage: docs
   script:
     - 'mvn $MAVEN_CLI_OPTS site -PopenSource,enableUpdatesReports,enableDependencyCheckReport -DmavenSonarReportPluginVersion=0.2.1'
-#    - 'find . -type f -name "sonar.html" | xargs --no-run-if-empty sed -i "s/\/project\/index\//\/dashboard\/index\//g"'
 #    - 'mvn $MAVEN_CLI_OPTS site:stage -PopenSource,enableUpdatesReports,enableDependencyCheckReport'
 #    - 'rm -r target/site'
 #    - 'mv `find ./target -type f -name "team-list.html" | sed -r "s|/[^/]+$||" | sort -u | head -1` target/pages'
