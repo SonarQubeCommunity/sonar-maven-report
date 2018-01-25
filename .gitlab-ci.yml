@@ -106,7 +106,7 @@ variables:
 .maven-site: &maven-site
   stage: docs
   script:
-    - 'mvn $MAVEN_CLI_OPTS site -PopenSource,enableUpdatesReports,enableDependencyCheckReport -DmavenSonarReportPluginVersion=0.2.1'
+    - 'mvn $MAVEN_CLI_OPTS site -PopenSource,enableUpdatesReports,enableDependencyCheckReport'
 #    - 'mvn $MAVEN_CLI_OPTS site:stage -PopenSource,enableUpdatesReports,enableDependencyCheckReport'
 #    - 'rm -r target/site'
 #    - 'mv `find ./target -type f -name "team-list.html" | sed -r "s|/[^/]+$||" | sort -u | head -1` target/pages'
@@ -189,8 +189,8 @@ maven-site:job:
     - maven-unit:job
     - maven-integration-artifacts-deploy:job
   only:
-    - ossrh-releases@freedumbytes/sonar-maven-report
-#    - tags@freedumbytes/sonar-maven-report
+#    - ossrh-releases@freedumbytes/sonar-maven-report
+    - tags@freedumbytes/sonar-maven-report
 
 
 
@@ -234,5 +234,5 @@ pages:
     - public
     expire_in: 1h
   only:
-    - ossrh-releases@freedumbytes/sonar-maven-report
-#    - tags@freedumbytes/sonar-maven-report
+#    - ossrh-releases@freedumbytes/sonar-maven-report
+    - tags@freedumbytes/sonar-maven-report
