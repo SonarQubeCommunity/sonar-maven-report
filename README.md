@@ -184,7 +184,7 @@ Add the plugin to the reporting section in the POM:
       <plugin>
         <groupId>nl.demon.shadowland.maven.plugins</groupId>
         <artifactId>sonarqube-maven-report</artifactId>
-        <version>0.2.1</version>
+        <version>0.2.2</version>
       </plugin>
     </plugins>
   </reporting>
@@ -253,4 +253,97 @@ To see [the Maven report in action](https://freedumbytes.gitlab.io/sonar-maven-r
 
 Generate the Maven site with: `mvn site`.
 
-ToDo: Generate only the report with `` or `mvn nl.demon.shadowland.maven.plugins:sonarqube-maven-report:report`.
+Generate only the report with `mvn nl.demon.shadowland.maven.plugins:sonarqube-maven-report:0.2.2:report [-Dsonar.host.url=https://sonarcloud.io/]`.
+
+**Note**: To make sure both commands result in the same content, take a look under the hood of Maven to understand the alternative `pluginManagement` usage shown below.
+
+#### Maven under the hood
+
+First consider the way the `SonarReportMojo` defined the url parameter:
+
+```java
+  @Parameter( property = "sonar.host.url", defaultValue = "http://localhost:9000", alias = "sonar.host.url", required = true )
+  private String sonarHostURL;
+```
+
+Thus there are 3 ways to set this parameter in the POM, which are of course all overruled by the command line option `-Dsonar.host.url`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <properties>
+    <sonar.host.url>https://sonar.property.com/</sonar.host.url>
+  </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>nl.demon.shadowland.maven.plugins</groupId>
+          <artifactId>sonarqube-maven-report</artifactId>
+          <version>0.2.2</version>
+          <configuration>
+            <sonarHostURL>https://sonar.plugin.management.com/</sonarHostURL>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <reporting>
+      <plugin>
+        <groupId>nl.demon.shadowland.maven.plugins</groupId>
+        <artifactId>sonarqube-maven-report</artifactId>
+        <version>0.2.2</version>
+        <configuration>
+          <sonarHostURL>https://sonar.reporting.com/</sonarHostURL>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+</project>
+```
+
+Testing these three possibilities with the above mentioned two Maven Usage commands will not result in the same content for the last reporting configuration.
+
+## Usage alternative pluginManagement
+
+Alternatively, you can add the following plugin management to override default values:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>nl.demon.shadowland.maven.plugins</groupId>
+          <artifactId>sonarqube-maven-report</artifactId>
+          <version>0.2.2</version>
+          <configuration>
+		    <!-- default value is http://localhost:9000 -->
+            <sonarHostURL>https://sonarcloud.io/</sonarHostURL>
+		    <!-- no branch by default -->
+		    <branch>osssrh-releases</branch>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <reporting>
+      <plugin>
+        <groupId>nl.demon.shadowland.maven.plugins</groupId>
+        <artifactId>sonarqube-maven-report</artifactId>
+        <version>0.2.2</version>
+      </plugin>
+    </plugins>
+  </reporting>
+</project>
+```

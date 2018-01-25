@@ -12,7 +12,7 @@
   <groupId>nl.demon.shadowland.maven.plugins</groupId>
   <artifactId>sonarqube-maven-report</artifactId>
   <packaging>maven-plugin</packaging>
-  <version>0.2.2-SNAPSHOT</version>
+  <version>0.2.3-SNAPSHOT</version>
 
   <name>SonarQube/SonarCloud Maven Report Plugin</name>
   <description>Add a report link to the Maven site that redirects to the project dashboard in SonarQube/SonarCloud.</description>
@@ -74,7 +74,7 @@
     <mavenProjectInfoReportsPluginVersion>2.9</mavenProjectInfoReportsPluginVersion>
     <mavenDependencyCheckVersion>3.1.0</mavenDependencyCheckVersion>
     <sonarMavenPluginVersion>3.4.0.905</sonarMavenPluginVersion>
-    <mavenSonarReportPluginVersion>${project.version}</mavenSonarReportPluginVersion>
+    <mavenSonarReportPluginVersion>0.2.3-SNAPSHOT</mavenSonarReportPluginVersion>
 
     <mavenProjectVersion>2.2.1</mavenProjectVersion>
     <mavenPluginApiVersion>3.5.2</mavenPluginApiVersion>
@@ -91,7 +91,7 @@
     <maven.compiler.fork>true</maven.compiler.fork>
     <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
     <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
-    <maven.compiler.target>${maven.compiler.compilerVersion}</maven.compiler.target>
+    <maven.compiler.target>1.7</maven.compiler.target>
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
     <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
     <maven.compiler.meminitial>128m</maven.compiler.meminitial>
