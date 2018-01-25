@@ -91,7 +91,7 @@
     <maven.compiler.fork>true</maven.compiler.fork>
     <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
     <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
-    <maven.compiler.target>${maven.compiler.compilerVersion}</maven.compiler.target>
+    <maven.compiler.target>1.7</maven.compiler.target>
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
     <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
     <maven.compiler.meminitial>128m</maven.compiler.meminitial>
