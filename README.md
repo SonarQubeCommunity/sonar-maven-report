@@ -154,7 +154,7 @@ In case of Java code the [Sources](https://freedumbytes.gitlab.io/dpl/html/compl
 
 [![Central](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/central.png "Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22nl.demon.shadowland.maven.plugins%22%20AND%20a%3A%22sonarqube-maven-report%22)
 [![Maven Central](https://img.shields.io/maven-central/v/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=Maven%20Central "Maven Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22nl.demon.shadowland.maven.plugins%22%20AND%20a%3A%22sonarqube-maven-report%22)
-[![SonarQube/SonarCloud Maven Report Plugin Javadoc](https://javadoc.io/badge/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?color=blue&label=Javadoc "SonarQube/SonarCloud Maven Report Plugin Javadoc")](http://javadoc.io/doc/nl.demon.shadowland.maven.plugins/sonarqube-maven-report)
+[![SonarQube/SonarCloud Maven Report Plugin Javadoc](https://javadoc.io/badge/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?color=yellow&label=Javadoc "SonarQube/SonarCloud Maven Report Plugin Javadoc")](http://javadoc.io/doc/nl.demon.shadowland.maven.plugins/sonarqube-maven-report)
 [![SonarQube/SonarCloud Maven Report Plugin License](https://img.shields.io/badge/GNU_Lesser_General_Public_License-3.0-red.svg "SonarQube/SonarCloud Maven Report Plugin License")](https://www.gnu.org/licenses/lgpl-3.0.html)
 
 [![Nexus](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/nexus.png "Nexus")](https://oss.sonatype.org/index.html#nexus-search;gav~nl.demon.shadowland.maven.plugins~sonarqube-maven-report~~~)
