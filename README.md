@@ -146,7 +146,7 @@ In case of Java code the [Sources](https://freedumbytes.gitlab.io/dpl/html/compl
 ## Usage version 0.2.x
 
 [![Maven Site](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/maven.png "Maven Site")](https://freedumbytes.gitlab.io/sonar-maven-report/)
-[![Maven Site](https://img.shields.io/nexus/r/https/oss.sonatype.org/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=SonarQube%2FSonarCloud%20Maven%20Report%20Plugin "Maven Site")](https://freedumbytes.gitlab.io/sonar-maven-report/)
+[![Maven Site](https://javadoc.io/badge/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.png?color=blue&label=SonarQube%2FSonarCloud%20Maven%20Report%20Plugin "Maven Site")](https://freedumbytes.gitlab.io/sonar-maven-report/)
 
 [![SonarQube/SonarCloud Maven Report Plugin pipeline](https://gitlab.com/freedumbytes/sonar-maven-report/badges/ossrh-releases/build.svg "SonarQube/SonarCloud Maven Report Plugin pipeline")](https://gitlab.com/freedumbytes/sonar-maven-report)
 [![SonarQube/SonarCloud Maven Report Plugin build master](https://img.shields.io/travis/SonarQubeCommunity/sonar-maven-report/master.svg?label=build:master "SonarQube/SonarCloud Maven Report Plugin build master")](https://github.com/SonarQubeCommunity/sonar-maven-report/tree/master)
