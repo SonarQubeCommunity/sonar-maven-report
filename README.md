@@ -145,12 +145,12 @@ In case of Java code the [Sources](https://freedumbytes.gitlab.io/dpl/html/compl
 
 ## Usage version 0.2.x
 
+[![Maven Site](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/maven.png "Maven Site")](https://freedumbytes.gitlab.io/sonar-maven-report/)
+[![Maven Site](https://img.shields.io/nexus/r/https/oss.sonatype.org/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=SonarQube%2FSonarCloud%20Maven%20Report%20Plugin "Maven Site")](https://freedumbytes.gitlab.io/sonar-maven-report/)
+
 [![SonarQube/SonarCloud Maven Report Plugin pipeline](https://gitlab.com/freedumbytes/sonar-maven-report/badges/ossrh-releases/build.svg "SonarQube/SonarCloud Maven Report Plugin pipeline")](https://gitlab.com/freedumbytes/sonar-maven-report)
 [![SonarQube/SonarCloud Maven Report Plugin build master](https://img.shields.io/travis/SonarQubeCommunity/sonar-maven-report/master.svg?label=build:master "SonarQube/SonarCloud Maven Report Plugin build master")](https://github.com/SonarQubeCommunity/sonar-maven-report/tree/master)
 [![SonarQube/SonarCloud Maven Report Plugin build ossrh](https://img.shields.io/travis/SonarQubeCommunity/sonar-maven-report/ossrh-releases.svg?label=build:ossrh-releases "SonarQube/SonarCloud Maven Report Plugin build ossrh")](https://github.com/SonarQubeCommunity/sonar-maven-report/tree/ossrh-releases)
-
-[![Maven Site](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/maven.png "Maven Site")](https://freedumbytes.gitlab.io/sonar-maven-report/)
-[![Maven Site](https://img.shields.io/nexus/r/https/oss.sonatype.org/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=SonarQube%2FSonarCloud%20Maven%20Report%20Plugin "Maven Site")](https://freedumbytes.gitlab.io/sonar-maven-report/)
 
 [![Central](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/central.png "Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22nl.demon.shadowland.maven.plugins%22%20AND%20a%3A%22sonarqube-maven-report%22)
 [![Maven Central](https://img.shields.io/maven-central/v/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=Maven%20Central "Maven Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22nl.demon.shadowland.maven.plugins%22%20AND%20a%3A%22sonarqube-maven-report%22)
