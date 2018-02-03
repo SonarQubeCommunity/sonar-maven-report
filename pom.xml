@@ -150,8 +150,6 @@
     <sonar.dependencyCheck.reportPath>${owaspReportsPath}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
     <sonar.dependencyCheck.htmlReportPath>${owaspReportsPath}/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
     <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
-    <sonar.java.binaries>target/classes</sonar.java.binaries>
-    <sonar.java.libraries>target/**/*.jar</sonar.java.libraries>
     <sonar.exclusions>**/generated-sources/**,**/generated/**</sonar.exclusions>
     <sonar.coverage.exclusions>**/generated/**</sonar.coverage.exclusions>
     <sonar.cpd.exclusions>**/generated/**</sonar.cpd.exclusions>
