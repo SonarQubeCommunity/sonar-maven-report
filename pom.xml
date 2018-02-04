@@ -138,12 +138,6 @@
     <owaspReportFormat>all</owaspReportFormat>
     <cveValidForHours>24</cveValidForHours>
 
-    <customSuppressionHintsVersion>1.0.2</customSuppressionHintsVersion>
-    <customSuppressionHintsFolderVersion>${customSuppressionHintsVersion}</customSuppressionHintsFolderVersion>
-    <customSuppressionHintsPath>${ossrhHost}/content/groups/public/nl/demon/shadowland/freedumbytes/maven/owasp/dependency-check/${customSuppressionHintsFolderVersion}</customSuppressionHintsPath>
-    <customSuppressionFile>${customSuppressionHintsPath}/dependency-check-${customSuppressionHintsVersion}-suppression.xml</customSuppressionFile>
-    <customHintsFile>${customSuppressionHintsPath}/dependency-check-${customSuppressionHintsVersion}-hints.xml</customHintsFile>
-
     <sonar.host.url>${sonarCloudHost}</sonar.host.url>
     <sonar.junit.reportPaths>target/surefire-reports,target/failsafe-reports</sonar.junit.reportPaths>
     <sonar.jacoco.reportPaths>${coverageReportsPathUnit},${coverageReportsPathIntegration}</sonar.jacoco.reportPaths>
@@ -620,8 +614,6 @@
             <outputDirectory>${owaspReportsPath}</outputDirectory>
             <format>${owaspReportFormat}</format>
             <cveValidForHours>${cveValidForHours}</cveValidForHours>
-            <suppressionFile>${customSuppressionFile}</suppressionFile>
-            <hintsFile>${customHintsFile}</hintsFile>
           </configuration>
         </plugin>
 
