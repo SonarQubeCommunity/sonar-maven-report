@@ -102,7 +102,7 @@
     <maven.source.excludeResources>false</maven.source.excludeResources>
 
     <javadocExecutable>${jdkHome}/bin/javadoc</javadocExecutable>
-    <javadocVersion>${maven.compiler.target}</javadocVersion>
+    <javadocVersion>1.7.0</javadocVersion>
     <javadocDoclint>none</javadocDoclint>
     <javadocQuiet>true</javadocQuiet>
     <javadocAdditionalOptions />
