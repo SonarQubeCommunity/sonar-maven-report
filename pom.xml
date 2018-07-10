@@ -65,7 +65,7 @@
     <mavenFailsafePluginVersion>${mavenSurefirePluginVersion}</mavenFailsafePluginVersion>
     <mavenSurefireReportPluginVersion>${mavenSurefirePluginVersion}</mavenSurefireReportPluginVersion>
     <mavenSourcePluginVersion>3.0.1</mavenSourcePluginVersion>
-    <mavenJavadocPluginVersion>3.0.0</mavenJavadocPluginVersion>
+    <mavenJavadocPluginVersion>3.0.1</mavenJavadocPluginVersion>
     <mavenGPGPluginVersion>1.6</mavenGPGPluginVersion>
     <nexusStagingMavenPluginVersion>1.6.8</nexusStagingMavenPluginVersion>
     <mavenDeployPluginVersion>2.8.2</mavenDeployPluginVersion>
