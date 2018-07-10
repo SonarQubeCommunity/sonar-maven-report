@@ -60,7 +60,7 @@
     <versionsMavenPluginVersion>2.5</versionsMavenPluginVersion>
     <mavenPluginPluginVersion>3.5.2</mavenPluginPluginVersion>
     <mavenCompilerPluginVersion>3.7.0</mavenCompilerPluginVersion>
-    <jacocoMavenPluginVersion>0.7.9</jacocoMavenPluginVersion>
+    <jacocoMavenPluginVersion>0.8.1</jacocoMavenPluginVersion>
     <mavenSurefirePluginVersion>2.20.1</mavenSurefirePluginVersion>
     <mavenFailsafePluginVersion>${mavenSurefirePluginVersion}</mavenFailsafePluginVersion>
     <mavenSurefireReportPluginVersion>${mavenSurefirePluginVersion}</mavenSurefireReportPluginVersion>
