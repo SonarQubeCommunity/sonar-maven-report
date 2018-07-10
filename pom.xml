@@ -72,7 +72,7 @@
     <mavenReleasePluginVersion>2.5.3</mavenReleasePluginVersion>
     <mavenSitePluginVersion>3.7.1</mavenSitePluginVersion>
     <mavenProjectInfoReportsPluginVersion>2.9</mavenProjectInfoReportsPluginVersion>
-    <mavenDependencyCheckVersion>3.1.0</mavenDependencyCheckVersion>
+    <mavenDependencyCheckVersion>3.2.1</mavenDependencyCheckVersion>
     <sonarMavenPluginVersion>3.4.0.905</sonarMavenPluginVersion>
     <mavenSonarReportPluginVersion>0.2.3-SNAPSHOT</mavenSonarReportPluginVersion>
 
