@@ -61,7 +61,7 @@
     <mavenPluginPluginVersion>3.5.2</mavenPluginPluginVersion>
     <mavenCompilerPluginVersion>3.7.0</mavenCompilerPluginVersion>
     <jacocoMavenPluginVersion>0.8.1</jacocoMavenPluginVersion>
-    <mavenSurefirePluginVersion>2.20.1</mavenSurefirePluginVersion>
+    <mavenSurefirePluginVersion>2.22.0</mavenSurefirePluginVersion>
     <mavenFailsafePluginVersion>${mavenSurefirePluginVersion}</mavenFailsafePluginVersion>
     <mavenSurefireReportPluginVersion>${mavenSurefirePluginVersion}</mavenSurefireReportPluginVersion>
     <mavenSourcePluginVersion>3.0.1</mavenSourcePluginVersion>
@@ -479,7 +479,6 @@
           <artifactId>maven-failsafe-plugin</artifactId>
           <version>${mavenFailsafePluginVersion}</version>
           <configuration>
-            <encoding>${project.reporting.outputEncoding}</encoding>
             <skipTests>${skipIntegrationTests}</skipTests>
             <runOrder>${failsafe.runOrder}</runOrder>
             <jvm>${jvm}</jvm>
