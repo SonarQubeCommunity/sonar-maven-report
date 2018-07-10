@@ -183,6 +183,7 @@ Thumbs.db       binary
 *.zip           binary
 *.gz            binary
 *.tgz           binary
+*.cab           binary
 
 #certificate
 *.pem           text
