@@ -12,7 +12,7 @@ Version 0.1 was hosted at [codehaus.org](https://twitter.com/codehaus) that was 
 
 ![The Wayback Machine](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/codehaus.png)
 
-In [![issue 9](https://img.shields.io/github/issues/detail/s/SonarQubeCommunity/sonar-maven-report/9.svg "issue 9")](https://github.com/SonarQubeCommunity/sonar-maven-report/issues/9) was decided to switch to [Sonatype Open Source Software Repository Hosting](http://central.sonatype.org/pages/ossrh-guide.html) (OSSRH).
+In [![issue 9](https://img.shields.io/github/issues/detail/s/SonarQubeCommunity/sonar-maven-report/9.svg "issue 9")](https://github.com/SonarQubeCommunity/sonar-maven-report/issues/9) was decided to switch to [Sonatype Open Source Software Repository Hosting](https://central.sonatype.org/pages/ossrh-guide.html) (OSSRH).
 
 ![Issue 9](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/ossrh.png)
 
@@ -154,7 +154,7 @@ In case of Java code the [Sources](https://freedumbytes.gitlab.io/dpl/html/compl
 
 [![Central](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/central.png "Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22nl.demon.shadowland.maven.plugins%22%20AND%20a%3A%22sonarqube-maven-report%22)
 [![Maven Central](https://img.shields.io/maven-central/v/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=Maven%20Central "Maven Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22nl.demon.shadowland.maven.plugins%22%20AND%20a%3A%22sonarqube-maven-report%22)
-[![SonarQube/SonarCloud Maven Report Plugin Javadoc](https://javadoc.io/badge/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?color=yellow&label=Javadoc "SonarQube/SonarCloud Maven Report Plugin Javadoc")](http://javadoc.io/doc/nl.demon.shadowland.maven.plugins/sonarqube-maven-report)
+[![SonarQube/SonarCloud Maven Report Plugin Javadoc](https://javadoc.io/badge/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?color=yellow&label=Javadoc "SonarQube/SonarCloud Maven Report Plugin Javadoc")](https://javadoc.io/doc/nl.demon.shadowland.maven.plugins/sonarqube-maven-report)
 [![SonarQube/SonarCloud Maven Report Plugin License](https://img.shields.io/badge/GNU_Lesser_General_Public_License-3.0-red.svg "SonarQube/SonarCloud Maven Report Plugin License")](https://www.gnu.org/licenses/lgpl-3.0.html)
 
 [![Nexus](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/nexus.png "Nexus")](https://oss.sonatype.org/index.html#nexus-search;gav~nl.demon.shadowland.maven.plugins~sonarqube-maven-report~~~)
@@ -285,7 +285,7 @@ Thus there are 3 ways to set this parameter in the POM, which are of course all 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <properties>
@@ -330,7 +330,7 @@ Alternatively, you can add the following plugin management to override default v
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <build>
