@@ -58,22 +58,22 @@
     <mavenFluidoSkinVersion>1.7</mavenFluidoSkinVersion>
 
     <versionsMavenPluginVersion>2.5</versionsMavenPluginVersion>
-    <mavenPluginPluginVersion>3.5</mavenPluginPluginVersion>
+    <mavenPluginPluginVersion>3.5.2</mavenPluginPluginVersion>
     <mavenCompilerPluginVersion>3.7.0</mavenCompilerPluginVersion>
-    <jacocoMavenPluginVersion>0.7.9</jacocoMavenPluginVersion>
-    <mavenSurefirePluginVersion>2.20.1</mavenSurefirePluginVersion>
+    <jacocoMavenPluginVersion>0.8.1</jacocoMavenPluginVersion>
+    <mavenSurefirePluginVersion>2.22.0</mavenSurefirePluginVersion>
     <mavenFailsafePluginVersion>${mavenSurefirePluginVersion}</mavenFailsafePluginVersion>
     <mavenSurefireReportPluginVersion>${mavenSurefirePluginVersion}</mavenSurefireReportPluginVersion>
     <mavenSourcePluginVersion>3.0.1</mavenSourcePluginVersion>
-    <mavenJavadocPluginVersion>3.0.0</mavenJavadocPluginVersion>
+    <mavenJavadocPluginVersion>3.0.1</mavenJavadocPluginVersion>
     <mavenGPGPluginVersion>1.6</mavenGPGPluginVersion>
     <nexusStagingMavenPluginVersion>1.6.8</nexusStagingMavenPluginVersion>
     <mavenDeployPluginVersion>2.8.2</mavenDeployPluginVersion>
     <mavenReleasePluginVersion>2.5.3</mavenReleasePluginVersion>
-    <mavenSitePluginVersion>3.7</mavenSitePluginVersion>
+    <mavenSitePluginVersion>3.7.1</mavenSitePluginVersion>
     <mavenProjectInfoReportsPluginVersion>2.9</mavenProjectInfoReportsPluginVersion>
-    <mavenDependencyCheckVersion>3.1.0</mavenDependencyCheckVersion>
-    <sonarMavenPluginVersion>3.4.0.905</sonarMavenPluginVersion>
+    <mavenDependencyCheckVersion>3.2.1</mavenDependencyCheckVersion>
+    <sonarMavenPluginVersion>3.4.1.1168</sonarMavenPluginVersion>
     <mavenSonarReportPluginVersion>0.2.3-SNAPSHOT</mavenSonarReportPluginVersion>
 
     <mavenProjectVersion>2.2.1</mavenProjectVersion>
@@ -102,7 +102,7 @@
     <maven.source.excludeResources>false</maven.source.excludeResources>
 
     <javadocExecutable>${jdkHome}/bin/javadoc</javadocExecutable>
-    <javadocVersion>${maven.compiler.target}</javadocVersion>
+    <javadocVersion>1.7.0</javadocVersion>
     <javadocDoclint>none</javadocDoclint>
     <javadocQuiet>true</javadocQuiet>
     <javadocAdditionalOptions />
@@ -138,20 +138,12 @@
     <owaspReportFormat>all</owaspReportFormat>
     <cveValidForHours>24</cveValidForHours>
 
-    <customSuppressionHintsVersion>1.0.2</customSuppressionHintsVersion>
-    <customSuppressionHintsFolderVersion>${customSuppressionHintsVersion}</customSuppressionHintsFolderVersion>
-    <customSuppressionHintsPath>${ossrhHost}/content/groups/public/nl/demon/shadowland/freedumbytes/maven/owasp/dependency-check/${customSuppressionHintsFolderVersion}</customSuppressionHintsPath>
-    <customSuppressionFile>${customSuppressionHintsPath}/dependency-check-${customSuppressionHintsVersion}-suppression.xml</customSuppressionFile>
-    <customHintsFile>${customSuppressionHintsPath}/dependency-check-${customSuppressionHintsVersion}-hints.xml</customHintsFile>
-
     <sonar.host.url>${sonarCloudHost}</sonar.host.url>
     <sonar.junit.reportPaths>target/surefire-reports,target/failsafe-reports</sonar.junit.reportPaths>
     <sonar.jacoco.reportPaths>${coverageReportsPathUnit},${coverageReportsPathIntegration}</sonar.jacoco.reportPaths>
     <sonar.dependencyCheck.reportPath>${owaspReportsPath}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
     <sonar.dependencyCheck.htmlReportPath>${owaspReportsPath}/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
     <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
-    <sonar.java.binaries>target/classes</sonar.java.binaries>
-    <sonar.java.libraries>target/**/*.jar</sonar.java.libraries>
     <sonar.exclusions>**/generated-sources/**,**/generated/**</sonar.exclusions>
     <sonar.coverage.exclusions>**/generated/**</sonar.coverage.exclusions>
     <sonar.cpd.exclusions>**/generated/**</sonar.cpd.exclusions>
@@ -487,7 +479,6 @@
           <artifactId>maven-failsafe-plugin</artifactId>
           <version>${mavenFailsafePluginVersion}</version>
           <configuration>
-            <encoding>${project.reporting.outputEncoding}</encoding>
             <skipTests>${skipIntegrationTests}</skipTests>
             <runOrder>${failsafe.runOrder}</runOrder>
             <jvm>${jvm}</jvm>
@@ -622,8 +613,6 @@
             <outputDirectory>${owaspReportsPath}</outputDirectory>
             <format>${owaspReportFormat}</format>
             <cveValidForHours>${cveValidForHours}</cveValidForHours>
-            <suppressionFile>${customSuppressionFile}</suppressionFile>
-            <hintsFile>${customHintsFile}</hintsFile>
           </configuration>
         </plugin>
 

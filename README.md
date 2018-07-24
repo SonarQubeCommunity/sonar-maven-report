@@ -1,6 +1,7 @@
 # SonarQube/SonarCloud Maven Report Plugin
 
-[![Build Status](https://api.travis-ci.org/SonarQubeCommunity/sonar-maven-report.svg)](https://travis-ci.org/SonarQubeCommunity/sonar-maven-report)
+[![SonarQube/SonarCloud Maven Report Plugin License](https://img.shields.io/badge/GNU_Lesser_General_Public_License-3.0-red.svg "SonarQube/SonarCloud Maven Report Plugin License")](https://www.gnu.org/licenses/lgpl-3.0.html)
+[![SonarQube/SonarCloud Maven Report Plugin pipeline](https://api.travis-ci.org/SonarQubeCommunity/sonar-maven-report.svg)](https://travis-ci.org/SonarQubeCommunity/sonar-maven-report)
 
 ## Description
 
@@ -12,7 +13,7 @@ Version 0.1 was hosted at [codehaus.org](https://twitter.com/codehaus) that was 
 
 ![The Wayback Machine](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/codehaus.png)
 
-In [![issue 9](https://img.shields.io/github/issues/detail/s/SonarQubeCommunity/sonar-maven-report/9.svg "issue 9")](https://github.com/SonarQubeCommunity/sonar-maven-report/issues/9) was decided to switch to [Sonatype Open Source Software Repository Hosting](http://central.sonatype.org/pages/ossrh-guide.html) (OSSRH).
+In [![issue 9](https://img.shields.io/github/issues/detail/s/SonarQubeCommunity/sonar-maven-report/9.svg "issue 9")](https://github.com/SonarQubeCommunity/sonar-maven-report/issues/9) was decided to switch to [Sonatype Open Source Software Repository Hosting](https://central.sonatype.org/pages/ossrh-guide.html) (OSSRH).
 
 ![Issue 9](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/ossrh.png)
 
@@ -145,17 +146,14 @@ In case of Java code the [Sources](https://freedumbytes.gitlab.io/dpl/html/compl
 
 ## Usage version 0.2.x
 
-[![Maven Site](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/maven.png "Maven Site")](https://freedumbytes.gitlab.io/sonar-maven-report/)
-[![Maven Site](https://img.shields.io/nexus/r/https/oss.sonatype.org/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=SonarQube%2FSonarCloud%20Maven%20Report%20Plugin "Maven Site")](https://freedumbytes.gitlab.io/sonar-maven-report/)
-
-[![SonarQube/SonarCloud Maven Report Plugin pipeline](https://gitlab.com/freedumbytes/sonar-maven-report/badges/ossrh-releases/build.svg "SonarQube/SonarCloud Maven Report Plugin pipeline")](https://gitlab.com/freedumbytes/sonar-maven-report)
 [![SonarQube/SonarCloud Maven Report Plugin build master](https://img.shields.io/travis/SonarQubeCommunity/sonar-maven-report/master.svg?label=build:master "SonarQube/SonarCloud Maven Report Plugin build master")](https://github.com/SonarQubeCommunity/sonar-maven-report/tree/master)
 [![SonarQube/SonarCloud Maven Report Plugin build ossrh](https://img.shields.io/travis/SonarQubeCommunity/sonar-maven-report/ossrh-releases.svg?label=build:ossrh-releases "SonarQube/SonarCloud Maven Report Plugin build ossrh")](https://github.com/SonarQubeCommunity/sonar-maven-report/tree/ossrh-releases)
 
-[![Central](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/central.png "Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22nl.demon.shadowland.maven.plugins%22%20AND%20a%3A%22sonarqube-maven-report%22)
+[![Maven Site](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/maven.png "Maven Site")](https://freedumbytes.gitlab.io/sonar-maven-report/)
+[![Maven Site](https://img.shields.io/nexus/r/https/oss.sonatype.org/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=SonarQube%2FSonarCloud%20Maven%20Report%20Plugin "Maven Site")](https://freedumbytes.gitlab.io/sonar-maven-report/)
+
+[![Maven Central](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/central.png "Maven Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22nl.demon.shadowland.maven.plugins%22%20AND%20a%3A%22sonarqube-maven-report%22)
 [![Maven Central](https://img.shields.io/maven-central/v/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=Maven%20Central "Maven Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22nl.demon.shadowland.maven.plugins%22%20AND%20a%3A%22sonarqube-maven-report%22)
-[![SonarQube/SonarCloud Maven Report Plugin Javadoc](https://javadoc.io/badge/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?color=yellow&label=Javadoc "SonarQube/SonarCloud Maven Report Plugin Javadoc")](http://javadoc.io/doc/nl.demon.shadowland.maven.plugins/sonarqube-maven-report)
-[![SonarQube/SonarCloud Maven Report Plugin License](https://img.shields.io/badge/GNU_Lesser_General_Public_License-3.0-red.svg "SonarQube/SonarCloud Maven Report Plugin License")](https://www.gnu.org/licenses/lgpl-3.0.html)
 
 [![Nexus](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/nexus.png "Nexus")](https://oss.sonatype.org/index.html#nexus-search;gav~nl.demon.shadowland.maven.plugins~sonarqube-maven-report~~~)
 [![Nexus](https://img.shields.io/nexus/r/https/oss.sonatype.org/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=Nexus "Nexus")](https://oss.sonatype.org/index.html#nexus-search;gav~nl.demon.shadowland.maven.plugins~sonarqube-maven-report~~~)
@@ -164,18 +162,21 @@ In case of Java code the [Sources](https://freedumbytes.gitlab.io/dpl/html/compl
 [![MvnRepository](https://img.shields.io/nexus/r/https/oss.sonatype.org/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=MvnRepository "MvnRepository")](https://mvnrepository.com/artifact/nl.demon.shadowland.maven.plugins/sonarqube-maven-report)
 
 [![SonarCloud](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/sonarcloud.png "SonarCloud")](https://sonarcloud.io/dashboard?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report)
-[![SonarQube/SonarCloud Maven Report Plugin Quality Gate](https://sonarcloud.io/api/badges/gate?key=nl.demon.shadowland.maven.plugins:sonarqube-maven-report "SonarQube/SonarCloud Maven Report Plugin Quality Gate")](https://sonarcloud.io/dashboard?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report)
-[![SonarQube/SonarCloud Maven Report Plugin vulnerabilities](https://sonarcloud.io/api/badges/measure?key=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=vulnerabilities "SonarQube/SonarCloud Maven Report Plugin vulnerabilities")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=vulnerabilities)
-[![SonarQube/SonarCloud Maven Report Plugin bugs](https://sonarcloud.io/api/badges/measure?key=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=bugs "SonarQube/SonarCloud Maven Report Plugin bugs")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=bugs)
+[![SonarQube/SonarCloud Maven Report Plugin Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=alert_status "SonarQube/SonarCloud Maven Report Plugin Quality Gate")](https://sonarcloud.io/dashboard?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report)
+[![SonarQube/SonarCloud Maven Report Plugin vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=vulnerabilities "SonarQube/SonarCloud Maven Report Plugin vulnerabilities")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=vulnerabilities)
+[![SonarQube/SonarCloud Maven Report Plugin bugs](https://sonarcloud.io/api/project_badges/measure?project=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=bugs "SonarQube/SonarCloud Maven Report Plugin bugs")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=bugs)
+[![SonarQube/SonarCloud Maven Report Plugin coverage](https://sonarcloud.io/api/project_badges/measure?project=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=coverage "SonarQube/SonarCloud Maven Report Plugin coverage")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=coverage)
 
-[![SonarQube/SonarCloud Maven Report Plugin coverage](https://sonarcloud.io/api/badges/measure?key=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=coverage "SonarQube/SonarCloud Maven Report Plugin coverage")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=coverage)
-[![SonarQube/SonarCloud Maven Report Plugin lines of code](https://sonarcloud.io/api/badges/measure?key=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=ncloc "SonarQube/SonarCloud Maven Report Plugin lines of code")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=ncloc)
-[![SonarQube/SonarCloud Maven Report Plugin duplication](https://sonarcloud.io/api/badges/measure?key=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=duplicated_lines_density "SonarQube/SonarCloud Maven Report Plugin duplication")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=duplicated_lines)
-[![SonarQube/SonarCloud Maven Report Plugin technical debt](https://sonarcloud.io/api/badges/measure?key=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=sqale_debt_ratio "SonarQube/SonarCloud Maven Report Plugin technical debt")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=sqale_index)
+[![SonarCloud](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/sonarcloud.png "SonarCloud")](https://sonarcloud.io/dashboard?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report)
+[![SonarQube/SonarCloud Maven Report Plugin lines of code](https://sonarcloud.io/api/project_badges/measure?project=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=ncloc "SonarQube/SonarCloud Maven Report Plugin lines of code")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=ncloc)
+[![SonarQube/SonarCloud Maven Report Plugin duplication](https://sonarcloud.io/api/project_badges/measure?project=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=duplicated_lines_density "SonarQube/SonarCloud Maven Report Plugin duplication")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=duplicated_lines)
+[![SonarQube/SonarCloud Maven Report Plugin technical debt](https://sonarcloud.io/api/project_badges/measure?project=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=sqale_index "SonarQube/SonarCloud Maven Report Plugin technical debt")](https://sonarcloud.io/component_measures?id=nl.demon.shadowland.maven.plugins:sonarqube-maven-report&metric=sqale_index)
 
 [![Dependency Check Report](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/dependency-check.png "Dependency Check Report")](https://freedumbytes.gitlab.io/sonar-maven-report/dependency-check-report.html)
 [![Dependency Check Report](https://img.shields.io/nexus/r/https/oss.sonatype.org/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?label=Dependency%20Check "Dependency Check Report")](https://freedumbytes.gitlab.io/sonar-maven-report/dependency-check-report.html)
 
+[![SonarQube/SonarCloud Maven Report Plugin Javadoc.io](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/javadoc.png "SonarQube/SonarCloud Maven Report Plugin Javadoc.io")](https://javadoc.io/doc/nl.demon.shadowland.maven.plugins/sonarqube-maven-report)
+[![SonarQube/SonarCloud Maven Report Plugin Javadoc.io](https://javadoc.io/badge/nl.demon.shadowland.maven.plugins/sonarqube-maven-report.svg?color=yellow&label=Javadoc "SonarQube/SonarCloud Maven Report Plugin Javadoc.io")](https://javadoc.io/doc/nl.demon.shadowland.maven.plugins/sonarqube-maven-report)
 
 Add the plugin to the reporting section in the POM:
 
@@ -197,10 +198,8 @@ Add the plugin to the reporting section in the POM:
 
 ## Usage version 0.1
 
-
-[![Central](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/central.png "Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.codehaus.sonar-plugins%22%20AND%20a%3A%22maven-report%22)
+[![Maven Central](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/central.png "Maven Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.codehaus.sonar-plugins%22%20AND%20a%3A%22maven-report%22)
 [![Maven Central](https://img.shields.io/maven-central/v/org.codehaus.sonar-plugins/maven-report.svg?label=Maven%20Central "Maven Central")](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.codehaus.sonar-plugins%22%20AND%20a%3A%22maven-report%22)
-[![SonarQube/SonarCloud Maven Report Plugin License](https://img.shields.io/badge/GNU_Lesser_General_Public_License-3.0-red.svg "SonarQube/SonarCloud Maven Report Plugin License")](https://www.gnu.org/licenses/lgpl-3.0.html)
 
 [![Nexus](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/nexus.png "Nexus")](https://oss.sonatype.org/index.html#nexus-search;gav~org.codehaus.sonar-plugins~maven-report~~~)
 [![Nexus](https://img.shields.io/nexus/r/https/oss.sonatype.org/org.codehaus.sonar-plugins/maven-report.svg?label=Nexus "Nexus")](https://oss.sonatype.org/index.html#nexus-search;gav~org.codehaus.sonar-plugins~maven-report~~~)
@@ -209,14 +208,15 @@ Add the plugin to the reporting section in the POM:
 [![MvnRepository](https://img.shields.io/nexus/r/https/oss.sonatype.org/org.codehaus.sonar-plugins/maven-report.svg?label=MvnRepository "MvnRepository")](https://mvnrepository.com/artifact/org.codehaus.sonar-plugins/maven-report)
 
 [![SonarCloud](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/sonarcloud.png "SonarCloud")](https://sonarcloud.io/dashboard?id=org.codehaus.sonar-plugins:maven-report)
-[![SonarQube/SonarCloud Maven Report Plugin Quality Gate](https://sonarcloud.io/api/badges/gate?key=org.codehaus.sonar-plugins:maven-report "SonarQube/SonarCloud Maven Report Plugin Quality Gate")](https://sonarcloud.io/dashboard?id=org.codehaus.sonar-plugins:maven-report)
-[![SonarQube/SonarCloud Maven Report Plugin vulnerabilities](https://sonarcloud.io/api/badges/measure?key=org.codehaus.sonar-plugins:maven-report&metric=vulnerabilities "SonarQube/SonarCloud Maven Report Plugin vulnerabilities")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=vulnerabilities)
-[![SonarQube/SonarCloud Maven Report Plugin bugs](https://sonarcloud.io/api/badges/measure?key=org.codehaus.sonar-plugins:maven-report&metric=bugs "SonarQube/SonarCloud Maven Report Plugin bugs")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=bugs)
+[![SonarQube/SonarCloud Maven Report Plugin Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=org.codehaus.sonar-plugins:maven-report&metric=alert_status "SonarQube/SonarCloud Maven Report Plugin Quality Gate")](https://sonarcloud.io/dashboard?id=org.codehaus.sonar-plugins:maven-report)
+[![SonarQube/SonarCloud Maven Report Plugin vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=org.codehaus.sonar-plugins:maven-report&metric=vulnerabilities "SonarQube/SonarCloud Maven Report Plugin vulnerabilities")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=vulnerabilities)
+[![SonarQube/SonarCloud Maven Report Plugin bugs](https://sonarcloud.io/api/project_badges/measure?project=org.codehaus.sonar-plugins:maven-report&metric=bugs "SonarQube/SonarCloud Maven Report Plugin bugs")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=bugs)
+[![SonarQube/SonarCloud Maven Report Plugin coverage](https://sonarcloud.io/api/project_badges/measure?project=org.codehaus.sonar-plugins:maven-report&metric=coverage "SonarQube/SonarCloud Maven Report Plugin coverage")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=coverage)
 
-[![SonarQube/SonarCloud Maven Report Plugin coverage](https://sonarcloud.io/api/badges/measure?key=org.codehaus.sonar-plugins:maven-report&metric=coverage "SonarQube/SonarCloud Maven Report Plugin coverage")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=coverage)
-[![SonarQube/SonarCloud Maven Report Plugin lines of code](https://sonarcloud.io/api/badges/measure?key=org.codehaus.sonar-plugins:maven-report&metric=ncloc "SonarQube/SonarCloud Maven Report Plugin lines of code")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=ncloc)
-[![SonarQube/SonarCloud Maven Report Plugin duplication](https://sonarcloud.io/api/badges/measure?key=org.codehaus.sonar-plugins:maven-report&metric=duplicated_lines_density "SonarQube/SonarCloud Maven Report Plugin duplication")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=duplicated_lines)
-[![SonarQube/SonarCloud Maven Report Plugin technical debt](https://sonarcloud.io/api/badges/measure?key=org.codehaus.sonar-plugins:maven-report&metric=sqale_debt_ratio "SonarQube/SonarCloud Maven Report Plugin technical debt")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=sqale_index)
+[![SonarCloud](https://raw.githubusercontent.com/SonarQubeCommunity/sonar-maven-report/master/src/site/resources/images/icons/sonarcloud.png "SonarCloud")](https://sonarcloud.io/dashboard?id=org.codehaus.sonar-plugins:maven-report)
+[![SonarQube/SonarCloud Maven Report Plugin lines of code](https://sonarcloud.io/api/project_badges/measure?project=org.codehaus.sonar-plugins:maven-report&metric=ncloc "SonarQube/SonarCloud Maven Report Plugin lines of code")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=ncloc)
+[![SonarQube/SonarCloud Maven Report Plugin duplication](https://sonarcloud.io/api/project_badges/measure?project=org.codehaus.sonar-plugins:maven-report&metric=duplicated_lines_density "SonarQube/SonarCloud Maven Report Plugin duplication")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=duplicated_lines)
+[![SonarQube/SonarCloud Maven Report Plugin technical debt](https://sonarcloud.io/api/project_badges/measure?project=org.codehaus.sonar-plugins:maven-report&metric=sqale_index "SonarQube/SonarCloud Maven Report Plugin technical debt")](https://sonarcloud.io/component_measures?id=org.codehaus.sonar-plugins:maven-report&metric=sqale_index)
 
 Add the plugin to the reporting section in the POM:
 
@@ -285,7 +285,7 @@ Thus there are 3 ways to set this parameter in the POM, which are of course all 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <properties>
@@ -330,7 +330,7 @@ Alternatively, you can add the following plugin management to override default v
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <build>
