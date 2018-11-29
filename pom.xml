@@ -133,6 +133,8 @@
     <trimStackTrace>false</trimStackTrace>
     <surefire.printSummary>true</surefire.printSummary>
     <failsafe.printSummary>true</failsafe.printSummary>
+    <surefire.useSystemClassLoader>true</surefire.useSystemClassLoader>
+    <failsafe.useSystemClassLoader>true</failsafe.useSystemClassLoader>
 
     <owaspReportsPath>${project.build.directory}/owasp-reports</owaspReportsPath>
     <owaspReportFormat>all</owaspReportFormat>
@@ -460,6 +462,7 @@
             <reportFormat>${surefire.reportFormat}</reportFormat>
             <trimStackTrace>${trimStackTrace}</trimStackTrace>
             <printSummary>${surefire.printSummary}</printSummary>
+            <useSystemClassLoader>${surefire.useSystemClassLoader}</useSystemClassLoader>
             <includes>
               <include>**/Test*.java</include>
               <include>**/*Test.java</include>
@@ -486,6 +489,7 @@
             <reportFormat>${failsafe.reportFormat}</reportFormat>
             <trimStackTrace>${trimStackTrace}</trimStackTrace>
             <printSummary>${failsafe.printSummary}</printSummary>
+            <useSystemClassLoader>${failsafe.useSystemClassLoader}</useSystemClassLoader>
             <includes>
               <include>**/IT*.java</include>
               <include>**/*IT.java</include>
