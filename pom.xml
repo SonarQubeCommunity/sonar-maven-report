@@ -31,13 +31,13 @@
     </license>
   </licenses>
 
-  <mailingLists />
+  <mailingLists/>
 
   <scm>
     <connection>scm:git:https://github.com/SonarQubeCommunity/sonar-maven-report.git</connection>
     <developerConnection>scm:git:git@github.com:SonarQubeCommunity/sonar-maven-report.git</developerConnection>
     <url>https://github.com/SonarQubeCommunity/sonar-maven-report</url>
-    <tag />
+    <tag/>
   </scm>
 
   <ciManagement>
@@ -83,7 +83,7 @@
     <mavenPluginAnnotationsVersion>3.5</mavenPluginAnnotationsVersion>
     <mavenPluginTestingHarness>3.3.0</mavenPluginTestingHarness>
     <aetherApiVersion>1.1.0</aetherApiVersion>
-    <doxiaVersion>1.8</doxiaVersion>
+    <doxiaVersion>1.9.1</doxiaVersion>
 
     <jdkHome>${env.JAVA_HOME}</jdkHome>
     <jvm>${jdkHome}/bin/java</jvm>
@@ -105,7 +105,7 @@
     <javadocVersion>1.7.0</javadocVersion>
     <javadocDoclint>none</javadocDoclint>
     <javadocQuiet>true</javadocQuiet>
-    <javadocAdditionalOptions />
+    <javadocAdditionalOptions/>
     <javadocDetectJavaApiLink>false</javadocDetectJavaApiLink>
     <javadocDetectOfflineLinks>false</javadocDetectOfflineLinks>
     <javadocBreakiterator>true</javadocBreakiterator>
